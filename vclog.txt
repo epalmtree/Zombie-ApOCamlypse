@@ -1,0 +1,3901 @@
+commit 702f7f4c935353ae31805156ecacfd8a3eaf9ba0
+Author: Ubuntu <ubuntu@csvm>
+Date:   Tue Nov 29 18:31:38 2016 -0500
+
+    updating makefile to compile gui with lablgtk2, fixing runner and gui to typecheck
+
+ Makefile   |  2 +-
+ gui.ml     |  9 +++++----
+ gui.mli    |  9 ++++++---
+ runner.ml  | 15 ++++++++-------
+ runner.mli |  2 +-
+ 5 files changed, 21 insertions(+), 16 deletions(-)
+
+commit 25759ac6d11912a843941a495159665f57fe2292
+Merge: 7fd6a5a a031189
+Author: Ubuntu <ubuntu@csvm>
+Date:   Tue Nov 29 17:29:22 2016 -0500
+
+    attempting to merge
+
+commit 7fd6a5a2a0d4da01751ad4abe4d2489784371b6c
+Author: Ubuntu <ubuntu@csvm>
+Date:   Tue Nov 29 17:24:45 2016 -0500
+
+    update_main and initialize_gui return windows
+
+ gui.ml  |  6 +++++-
+ gui.mli | 58 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 61 insertions(+), 3 deletions(-)
+
+commit a031189aee6900c5810fdb09cd606d179a5347b6
+Author: la334 <la334@cornell.edu>
+Date:   Tue Nov 29 17:18:47 2016 -0500
+
+    windows in runner
+
+ runner.ml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 298f9dee9f8baaa1b127eb5378bbd02ea2a1690e
+Author: la334 <la334@cornell.edu>
+Date:   Tue Nov 29 17:06:18 2016 -0500
+
+    now have window in runner
+
+ _build/_digests              |  23 -------
+ _build/_log                  |  36 -----------
+ _build/command.cmi           | Bin 1387 -> 0 bytes
+ _build/command.mli           |  30 ---------
+ _build/command.mli.depends   |   1 -
+ _build/gameMap.cmi           | Bin 1610 -> 0 bytes
+ _build/gameMap.mli           |  52 ---------------
+ _build/gameMap.mli.depends   |   1 -
+ _build/gameState.cmi         | Bin 1072 -> 0 bytes
+ _build/gameState.mli         |  46 -------------
+ _build/gameState.mli.depends |   1 -
+ _build/gui.mli               |  49 --------------
+ _build/gui.mli.depends       |   1 -
+ _build/main.ml               |  47 --------------
+ _build/main.ml.depends       |   1 -
+ _build/memory.mli            |   7 --
+ _build/memory.mli.depends    |   1 -
+ _build/ocamlc.where          |   1 -
+ _build/runner.mli            |  37 -----------
+ _build/runner.mli.depends    |   1 -
+ _build/student.cmi           | Bin 2950 -> 0 bytes
+ _build/student.mli           | 149 -------------------------------------------
+ _build/student.mli.depends   |   1 -
+ _build/zombie.cmi            | Bin 971 -> 0 bytes
+ _build/zombie.mli            |  35 ----------
+ _build/zombie.mli.depends    |   1 -
+ 26 files changed, 521 deletions(-)
+
+commit 283eb7b89b03c99b64a8a973fb84f1ce5a69bb85
+Author: la334 <la334@cornell.edu>
+Date:   Tue Nov 29 17:05:57 2016 -0500
+
+    now have windows in runner
+
+ _build/_digests              |  23 +++++++
+ _build/_log                  |  36 +++++++++++
+ _build/command.cmi           | Bin 0 -> 1387 bytes
+ _build/command.mli           |  30 +++++++++
+ _build/command.mli.depends   |   1 +
+ _build/gameMap.cmi           | Bin 0 -> 1610 bytes
+ _build/gameMap.mli           |  52 +++++++++++++++
+ _build/gameMap.mli.depends   |   1 +
+ _build/gameState.cmi         | Bin 0 -> 1072 bytes
+ _build/gameState.mli         |  46 +++++++++++++
+ _build/gameState.mli.depends |   1 +
+ _build/gui.mli               |  49 ++++++++++++++
+ _build/gui.mli.depends       |   1 +
+ _build/main.ml               |  47 ++++++++++++++
+ _build/main.ml.depends       |   1 +
+ _build/memory.mli            |   7 ++
+ _build/memory.mli.depends    |   1 +
+ _build/ocamlc.where          |   1 +
+ _build/runner.mli            |  37 +++++++++++
+ _build/runner.mli.depends    |   1 +
+ _build/student.cmi           | Bin 0 -> 2950 bytes
+ _build/student.mli           | 149 +++++++++++++++++++++++++++++++++++++++++++
+ _build/student.mli.depends   |   1 +
+ _build/zombie.cmi            | Bin 0 -> 971 bytes
+ _build/zombie.mli            |  35 ++++++++++
+ _build/zombie.mli.depends    |   1 +
+ gui.ml                       |   1 +
+ gui.mli                      |   7 +-
+ runner.ml                    | 101 +++++++++++++++--------------
+ runner.mli                   |  10 +--
+ 30 files changed, 584 insertions(+), 56 deletions(-)
+
+commit 18ae97072ec3f270ec8d7bf083224077d9ca9900
+Author: Ubuntu <ubuntu@csvm>
+Date:   Tue Nov 29 16:37:38 2016 -0500
+
+    fixed items in student
+
+ gameState.ml |  2 +-
+ student.ml   | 24 ++++++++++++++----------
+ student.mli  |  4 ++--
+ 3 files changed, 17 insertions(+), 13 deletions(-)
+
+commit 7b835555a7cb245ec88899f26684557c81f567ac
+Author: Ubuntu <ubuntu@csvm>
+Date:   Tue Nov 29 15:23:32 2016 -0500
+
+    initialize_gui and destroy_gui
+
+ gui.ml  | 14 +++++++++++---
+ gui.mli | 13 ++++++++++---
+ 2 files changed, 21 insertions(+), 6 deletions(-)
+
+commit 1453c08ab974c0cef6912c8c6fe7c3263cf3c29a
+Author: Ubuntu <ubuntu@csvm>
+Date:   Tue Nov 29 14:39:19 2016 -0500
+
+    gui get_node
+
+ gui.ml  | 63 +++++++++++++++++++++++++++++++--------------------------------
+ gui.mli | 11 ++++++-----
+ 2 files changed, 37 insertions(+), 37 deletions(-)
+
+commit 2d951a88791bd72292d1183185b24ade8bf3449e
+Author: Ubuntu <ubuntu@csvm>
+Date:   Tue Nov 29 14:27:28 2016 -0500
+
+    MAKE PLAY
+
+ _build/_digests              |  52 ---------
+ _build/_log                  |  82 --------------
+ _build/command.cmi           | Bin 1387 -> 0 bytes
+ _build/command.cmo           | Bin 9322 -> 0 bytes
+ _build/command.ml            |  72 ------------
+ _build/command.ml.depends    |   1 -
+ _build/command.mli           |  30 -----
+ _build/command.mli.depends   |   1 -
+ _build/gameMap.cmi           | Bin 1610 -> 0 bytes
+ _build/gameMap.cmo           | Bin 7932 -> 0 bytes
+ _build/gameMap.ml            |  46 --------
+ _build/gameMap.ml.depends    |   1 -
+ _build/gameMap.mli           |  52 ---------
+ _build/gameMap.mli.depends   |   1 -
+ _build/gameState.cmi         | Bin 1072 -> 0 bytes
+ _build/gameState.cmo         | Bin 23446 -> 0 bytes
+ _build/gameState.ml          | 120 --------------------
+ _build/gameState.ml.depends  |   1 -
+ _build/gameState.mli         |  46 --------
+ _build/gameState.mli.depends |   1 -
+ _build/gui.cmi               | Bin 1285 -> 0 bytes
+ _build/gui.cmo               | Bin 3733 -> 0 bytes
+ _build/gui.ml                |  38 -------
+ _build/gui.ml.depends        |   1 -
+ _build/gui.mli               |  37 ------
+ _build/gui.mli.depends       |   1 -
+ _build/main.byte             | Bin 1935469 -> 0 bytes
+ _build/main.cmi              | Bin 461 -> 0 bytes
+ _build/main.cmo              | Bin 7649 -> 0 bytes
+ _build/main.ml               |  47 --------
+ _build/main.ml.depends       |   1 -
+ _build/memory.cmi            | Bin 531 -> 0 bytes
+ _build/memory.cmo            | Bin 2242 -> 0 bytes
+ _build/memory.ml             |   9 --
+ _build/memory.ml.depends     |   1 -
+ _build/memory.mli            |   7 --
+ _build/memory.mli.depends    |   1 -
+ _build/ocamlc.where          |   1 -
+ _build/runner.cmi            | Bin 873 -> 0 bytes
+ _build/runner.cmo            | Bin 25071 -> 0 bytes
+ _build/runner.ml             | 129 ---------------------
+ _build/runner.ml.depends     |   1 -
+ _build/runner.mli            |  37 ------
+ _build/runner.mli.depends    |   1 -
+ _build/student.cmi           | Bin 2891 -> 0 bytes
+ _build/student.cmo           | Bin 35772 -> 0 bytes
+ _build/student.ml            | 260 -------------------------------------------
+ _build/student.ml.depends    |   1 -
+ _build/student.mli           | 149 -------------------------
+ _build/student.mli.depends   |   1 -
+ _build/zombie.cmi            | Bin 971 -> 0 bytes
+ _build/zombie.cmo            | Bin 11779 -> 0 bytes
+ _build/zombie.ml             |  77 -------------
+ _build/zombie.ml.depends     |   1 -
+ _build/zombie.mli            |  35 ------
+ _build/zombie.mli.depends    |   1 -
+ main.byte                    |   1 -
+ 57 files changed, 1344 deletions(-)
+
+commit 487d564ffb953e7e36f17f8fcad65c76ae86e2bc
+Author: Ubuntu <ubuntu@csvm>
+Date:   Tue Nov 29 14:27:10 2016 -0500
+
+    MAKE PLAY
+
+ _build/_digests              |  52 +++++++++
+ _build/_log                  |  82 ++++++++++++++
+ _build/command.cmi           | Bin 0 -> 1387 bytes
+ _build/command.cmo           | Bin 0 -> 9322 bytes
+ _build/command.ml            |  72 ++++++++++++
+ _build/command.ml.depends    |   1 +
+ _build/command.mli           |  30 +++++
+ _build/command.mli.depends   |   1 +
+ _build/gameMap.cmi           | Bin 0 -> 1610 bytes
+ _build/gameMap.cmo           | Bin 0 -> 7932 bytes
+ _build/gameMap.ml            |  46 ++++++++
+ _build/gameMap.ml.depends    |   1 +
+ _build/gameMap.mli           |  52 +++++++++
+ _build/gameMap.mli.depends   |   1 +
+ _build/gameState.cmi         | Bin 0 -> 1072 bytes
+ _build/gameState.cmo         | Bin 0 -> 23446 bytes
+ _build/gameState.ml          | 120 ++++++++++++++++++++
+ _build/gameState.ml.depends  |   1 +
+ _build/gameState.mli         |  46 ++++++++
+ _build/gameState.mli.depends |   1 +
+ _build/gui.cmi               | Bin 0 -> 1285 bytes
+ _build/gui.cmo               | Bin 0 -> 3733 bytes
+ _build/gui.ml                |  38 +++++++
+ _build/gui.ml.depends        |   1 +
+ _build/gui.mli               |  37 ++++++
+ _build/gui.mli.depends       |   1 +
+ _build/main.byte             | Bin 0 -> 1935469 bytes
+ _build/main.cmi              | Bin 0 -> 461 bytes
+ _build/main.cmo              | Bin 0 -> 7649 bytes
+ _build/main.ml               |  47 ++++++++
+ _build/main.ml.depends       |   1 +
+ _build/memory.cmi            | Bin 0 -> 531 bytes
+ _build/memory.cmo            | Bin 0 -> 2242 bytes
+ _build/memory.ml             |   9 ++
+ _build/memory.ml.depends     |   1 +
+ _build/memory.mli            |   7 ++
+ _build/memory.mli.depends    |   1 +
+ _build/ocamlc.where          |   1 +
+ _build/runner.cmi            | Bin 0 -> 873 bytes
+ _build/runner.cmo            | Bin 0 -> 25071 bytes
+ _build/runner.ml             | 129 +++++++++++++++++++++
+ _build/runner.ml.depends     |   1 +
+ _build/runner.mli            |  37 ++++++
+ _build/runner.mli.depends    |   1 +
+ _build/student.cmi           | Bin 0 -> 2891 bytes
+ _build/student.cmo           | Bin 0 -> 35772 bytes
+ _build/student.ml            | 260 +++++++++++++++++++++++++++++++++++++++++++
+ _build/student.ml.depends    |   1 +
+ _build/student.mli           | 149 +++++++++++++++++++++++++
+ _build/student.mli.depends   |   1 +
+ _build/zombie.cmi            | Bin 0 -> 971 bytes
+ _build/zombie.cmo            | Bin 0 -> 11779 bytes
+ _build/zombie.ml             |  77 +++++++++++++
+ _build/zombie.ml.depends     |   1 +
+ _build/zombie.mli            |  35 ++++++
+ _build/zombie.mli.depends    |   1 +
+ gui.ml                       |  38 +++++++
+ main.byte                    |   1 +
+ 58 files changed, 1382 insertions(+)
+
+commit 1dca329da5cb799fbe359661bbc207719c1f69da
+Author: Ubuntu <ubuntu@csvm>
+Date:   Tue Nov 29 14:23:33 2016 -0500
+
+    fixed the zombie student mli stuff
+
+ gameMap.mli |  2 +-
+ zombie.ml   | 33 ++++++++++++++++-----------------
+ zombie.mli  |  4 ++--
+ 3 files changed, 19 insertions(+), 20 deletions(-)
+
+commit a03986c38e4a5ca00823ed855ae60c11d7e9d956
+Author: Ubuntu <ubuntu@csvm>
+Date:   Tue Nov 29 13:45:46 2016 -0500
+
+    need to check zombie and student mlis
+
+ gameState.ml |  2 +-
+ runner.ml    |  6 ++---
+ student.ml   | 71 ++++++++++++++++++++++++++++++------------------------------
+ student.mli  |  2 +-
+ 4 files changed, 41 insertions(+), 40 deletions(-)
+
+commit 23f15b69ef8ba4400f640f4ff03dfc650f536323
+Author: Ubuntu <ubuntu@csvm>
+Date:   Tue Nov 29 13:29:22 2016 -0500
+
+    getting there
+
+ _build/_digests              |  46 --------
+ _build/_log                  |  80 -------------
+ _build/command.cmi           | Bin 1387 -> 0 bytes
+ _build/command.cmo           | Bin 9322 -> 0 bytes
+ _build/command.ml            |  72 ------------
+ _build/command.ml.depends    |   1 -
+ _build/command.mli           |  30 -----
+ _build/command.mli.depends   |   1 -
+ _build/gameMap.cmi           | Bin 1610 -> 0 bytes
+ _build/gameMap.cmo           | Bin 7932 -> 0 bytes
+ _build/gameMap.ml            |  46 --------
+ _build/gameMap.ml.depends    |   1 -
+ _build/gameMap.mli           |  52 ---------
+ _build/gameMap.mli.depends   |   1 -
+ _build/gameState.cmi         | Bin 1072 -> 0 bytes
+ _build/gameState.cmo         | Bin 23395 -> 0 bytes
+ _build/gameState.ml          | 120 --------------------
+ _build/gameState.ml.depends  |   1 -
+ _build/gameState.mli         |  46 --------
+ _build/gameState.mli.depends |   1 -
+ _build/gui.cmi               | Bin 1285 -> 0 bytes
+ _build/gui.mli               |  37 -------
+ _build/gui.mli.depends       |   1 -
+ _build/main.cmi              | Bin 461 -> 0 bytes
+ _build/main.cmo              | Bin 7649 -> 0 bytes
+ _build/main.ml               |  47 --------
+ _build/main.ml.depends       |   1 -
+ _build/memory.cmi            | Bin 531 -> 0 bytes
+ _build/memory.cmo            | Bin 2242 -> 0 bytes
+ _build/memory.ml             |   9 --
+ _build/memory.ml.depends     |   1 -
+ _build/memory.mli            |   7 --
+ _build/memory.mli.depends    |   1 -
+ _build/ocamlc.where          |   1 -
+ _build/runner.cmi            | Bin 873 -> 0 bytes
+ _build/runner.cmo            | Bin 24919 -> 0 bytes
+ _build/runner.ml             | 129 ---------------------
+ _build/runner.ml.depends     |   1 -
+ _build/runner.mli            |  37 -------
+ _build/runner.mli.depends    |   1 -
+ _build/student.cmi           | Bin 2862 -> 0 bytes
+ _build/student.ml            | 259 -------------------------------------------
+ _build/student.ml.depends    |   1 -
+ _build/student.mli           | 149 -------------------------
+ _build/student.mli.depends   |   1 -
+ _build/zombie.cmi            | Bin 971 -> 0 bytes
+ _build/zombie.ml             |  78 -------------
+ _build/zombie.ml.depends     |   1 -
+ _build/zombie.mli            |  35 ------
+ _build/zombie.mli.depends    |   1 -
+ 50 files changed, 1296 deletions(-)
+
+commit a3de0a4dd45e37cdd251190cc4b414c8e1b6000d
+Author: Ubuntu <ubuntu@csvm>
+Date:   Tue Nov 29 13:28:01 2016 -0500
+
+    almost there?
+
+ _build/_digests              |  46 ++++++++
+ _build/_log                  |  80 +++++++++++++
+ _build/command.cmi           | Bin 0 -> 1387 bytes
+ _build/command.cmo           | Bin 0 -> 9322 bytes
+ _build/command.ml            |  72 ++++++++++++
+ _build/command.ml.depends    |   1 +
+ _build/command.mli           |  30 +++++
+ _build/command.mli.depends   |   1 +
+ _build/gameMap.cmi           | Bin 0 -> 1610 bytes
+ _build/gameMap.cmo           | Bin 0 -> 7932 bytes
+ _build/gameMap.ml            |  46 ++++++++
+ _build/gameMap.ml.depends    |   1 +
+ _build/gameMap.mli           |  52 +++++++++
+ _build/gameMap.mli.depends   |   1 +
+ _build/gameState.cmi         | Bin 0 -> 1072 bytes
+ _build/gameState.cmo         | Bin 0 -> 23395 bytes
+ _build/gameState.ml          | 120 ++++++++++++++++++++
+ _build/gameState.ml.depends  |   1 +
+ _build/gameState.mli         |  46 ++++++++
+ _build/gameState.mli.depends |   1 +
+ _build/gui.cmi               | Bin 0 -> 1285 bytes
+ _build/gui.mli               |  37 +++++++
+ _build/gui.mli.depends       |   1 +
+ _build/main.cmi              | Bin 0 -> 461 bytes
+ _build/main.cmo              | Bin 0 -> 7649 bytes
+ _build/main.ml               |  47 ++++++++
+ _build/main.ml.depends       |   1 +
+ _build/memory.cmi            | Bin 0 -> 531 bytes
+ _build/memory.cmo            | Bin 0 -> 2242 bytes
+ _build/memory.ml             |   9 ++
+ _build/memory.ml.depends     |   1 +
+ _build/memory.mli            |   7 ++
+ _build/memory.mli.depends    |   1 +
+ _build/ocamlc.where          |   1 +
+ _build/runner.cmi            | Bin 0 -> 873 bytes
+ _build/runner.cmo            | Bin 0 -> 24919 bytes
+ _build/runner.ml             | 129 +++++++++++++++++++++
+ _build/runner.ml.depends     |   1 +
+ _build/runner.mli            |  37 +++++++
+ _build/runner.mli.depends    |   1 +
+ _build/student.cmi           | Bin 0 -> 2862 bytes
+ _build/student.ml            | 259 +++++++++++++++++++++++++++++++++++++++++++
+ _build/student.ml.depends    |   1 +
+ _build/student.mli           | 149 +++++++++++++++++++++++++
+ _build/student.mli.depends   |   1 +
+ _build/zombie.cmi            | Bin 0 -> 971 bytes
+ _build/zombie.ml             |  78 +++++++++++++
+ _build/zombie.ml.depends     |   1 +
+ _build/zombie.mli            |  35 ++++++
+ _build/zombie.mli.depends    |   1 +
+ gameState.ml                 |  26 ++---
+ main.ml                      |   2 +-
+ runner.ml                    |  42 ++++---
+ runner.mli                   |   2 +-
+ student.mli                  |   2 +-
+ 55 files changed, 1332 insertions(+), 38 deletions(-)
+
+commit 2a6f37146352f4476f80b420f3fe561b9ffae03c
+Author: Ubuntu <ubuntu@csvm>
+Date:   Tue Nov 29 12:11:25 2016 -0500
+
+    we have runner now
+
+ gameMap.ml    |   2 +-
+ gameMap.mli   |   2 +-
+ gameState.ml  | 156 +++++++---------------------------------------------------
+ gameState.mli |  31 +++++-------
+ main.ml       |   1 +
+ runner.ml     | 131 ++++++++++++++++++++++++++++++++++++++++++++++++
+ runner.mli    |  37 ++++++++++++++
+ student.mli   |  42 ++++++++--------
+ 8 files changed, 224 insertions(+), 178 deletions(-)
+
+commit ac2fd055eb26d0fe956b7607336bfeb94bf2f829
+Author: Victoria Litvinova <Admin@dhcp-mcfad-32.eduroam.cornell.edu>
+Date:   Tue Nov 29 01:06:23 2016 -0500
+
+    upd studs random
+
+ student.ml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 90e5373c9387f42ae255dc22989c2351cd7ee02d
+Author: Ubuntu <ubuntu@csvm>
+Date:   Tue Nov 29 00:56:04 2016 -0500
+
+    should be able to make but not make play
+
+ gameState.mli | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 7127bca55166650fcd768209f280440cbb813566
+Merge: 6484319 7444a2e
+Author: Victoria Litvinova <Admin@dhcp-gs-3161.eduroam.cornell.edu>
+Date:   Mon Nov 28 23:44:00 2016 -0500
+
+    "HOW MANY TIMES ARE WE MERGIN"Merge branch 'master' of https://github.coecis.cornell.edu/la334/3110project
+
+commit 6484319e004cfcc96106967bc87a25be1bff7c33
+Author: Victoria Litvinova <Admin@dhcp-gs-3161.eduroam.cornell.edu>
+Date:   Mon Nov 28 23:43:56 2016 -0500
+
+    zombs
+
+ zombie.ml  | 31 ++++++++++++++++++-------------
+ zombie.mli | 30 ++++++++++++++++++++++--------
+ 2 files changed, 40 insertions(+), 21 deletions(-)
+
+commit 7444a2e381a06a03db3a2d9377aa5e08ddafd2be
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 23:21:28 2016 -0500
+
+    why
+
+ _build/_digests                     |  22 -----------
+ _build/_log                         |  32 ----------------
+ _build/command.cmi                  | Bin 1387 -> 0 bytes
+ _build/command.cmo                  | Bin 9322 -> 0 bytes
+ _build/command.ml                   |  72 ------------------------------------
+ _build/command.ml.depends           |   1 -
+ _build/command.mli                  |  30 ---------------
+ _build/command.mli.depends          |   1 -
+ _build/gameMap.cmi                  | Bin 1639 -> 0 bytes
+ _build/gameMap.cmo                  | Bin 7960 -> 0 bytes
+ _build/gameMap.ml                   |  46 -----------------------
+ _build/gameMap.ml.depends           |   1 -
+ _build/gameMap.mli                  |  52 --------------------------
+ _build/gameMap.mli.depends          |   1 -
+ _build/oUnit-test suite-csvm#00.log |  30 ---------------
+ _build/ocamlc.where                 |   1 -
+ _build/test.byte                    | Bin 2651347 -> 0 bytes
+ _build/test.cmi                     | Bin 1110 -> 0 bytes
+ _build/test.cmo                     | Bin 2769 -> 0 bytes
+ _build/test.ml                      |   6 ---
+ _build/test.ml.depends              |   1 -
+ _build/test_command.cmi             | Bin 1033 -> 0 bytes
+ _build/test_command.cmo             | Bin 2350 -> 0 bytes
+ _build/test_command.ml              |   5 ---
+ _build/test_command.ml.depends      |   1 -
+ _build/test_gameMap.cmi             | Bin 1033 -> 0 bytes
+ _build/test_gameMap.cmo             | Bin 2350 -> 0 bytes
+ _build/test_gameMap.ml              |   6 ---
+ _build/test_gameMap.ml.depends      |   1 -
+ gameState.mli                       |   2 +-
+ test.byte                           |   1 -
+ 31 files changed, 1 insertion(+), 311 deletions(-)
+
+commit a7ae2b5870034a7cfd558f157b5641924ba66425
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 23:16:12 2016 -0500
+
+    make works but make test and make play don't rip
+
+ _build/_digests                     |  22 +++++++++++
+ _build/_log                         |  32 ++++++++++++++++
+ _build/command.cmi                  | Bin 0 -> 1387 bytes
+ _build/command.cmo                  | Bin 0 -> 9322 bytes
+ _build/command.ml                   |  72 ++++++++++++++++++++++++++++++++++++
+ _build/command.ml.depends           |   1 +
+ _build/command.mli                  |  30 +++++++++++++++
+ _build/command.mli.depends          |   1 +
+ _build/gameMap.cmi                  | Bin 0 -> 1639 bytes
+ _build/gameMap.cmo                  | Bin 0 -> 7960 bytes
+ _build/gameMap.ml                   |  46 +++++++++++++++++++++++
+ _build/gameMap.ml.depends           |   1 +
+ _build/gameMap.mli                  |  52 ++++++++++++++++++++++++++
+ _build/gameMap.mli.depends          |   1 +
+ _build/oUnit-test suite-csvm#00.log |  30 +++++++++++++++
+ _build/ocamlc.where                 |   1 +
+ _build/test.byte                    | Bin 0 -> 2651347 bytes
+ _build/test.cmi                     | Bin 0 -> 1110 bytes
+ _build/test.cmo                     | Bin 0 -> 2769 bytes
+ _build/test.ml                      |   6 +++
+ _build/test.ml.depends              |   1 +
+ _build/test_command.cmi             | Bin 0 -> 1033 bytes
+ _build/test_command.cmo             | Bin 0 -> 2350 bytes
+ _build/test_command.ml              |   5 +++
+ _build/test_command.ml.depends      |   1 +
+ _build/test_gameMap.cmi             | Bin 0 -> 1033 bytes
+ _build/test_gameMap.cmo             | Bin 0 -> 2350 bytes
+ _build/test_gameMap.ml              |   6 +++
+ _build/test_gameMap.ml.depends      |   1 +
+ gameState.mli                       |   2 +-
+ test.byte                           |   1 +
+ 31 files changed, 311 insertions(+), 1 deletion(-)
+
+commit 522c5928e2b8fb0abe31e696a7f8216134c02719
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 23:11:38 2016 -0500
+
+    almost there fam
+
+ gameState.ml | 52 ++++++++++++++++++++++++++--------------------------
+ 1 file changed, 26 insertions(+), 26 deletions(-)
+
+commit 8128c252eda88fc16a3eac48c66f4ae8a92e78e4
+Merge: 6f60c13 170055d
+Author: Victoria Litvinova <Admin@dhcp-gs-3161.eduroam.cornell.edu>
+Date:   Mon Nov 28 23:09:59 2016 -0500
+
+    "brahhh"
+    Merge branch 'master' of https://github.coecis.cornell.edu/la334/3110project
+
+commit 6f60c13fe8d2487779066dc2d2ab28f620feb4b6
+Author: Victoria Litvinova <Admin@dhcp-gs-3161.eduroam.cornell.edu>
+Date:   Mon Nov 28 23:09:53 2016 -0500
+
+     them nums
+
+ student.mli | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 170055d93ef813cfda67724d64722431926e5215
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Nov 28 22:56:16 2016 -0500
+
+    Deleted trash test_memory since MDD isn't fixed yet.
+
+ test.ml        | 2 +-
+ test_memory.ml | 5 -----
+ 2 files changed, 1 insertion(+), 6 deletions(-)
+
+commit 9bf9352377dd81221a3a69135d75ea4d94e1134f
+Merge: ee551f4 925ad8c
+Author: Victoria Litvinova <Admin@dhcp-gs-3161.eduroam.cornell.edu>
+Date:   Mon Nov 28 22:53:18 2016 -0500
+
+    "fdjhfskf"Merge branch 'master' of https://github.coecis.cornell.edu/la334/3110project
+
+commit ee551f4b65ae0b2e840248beceb2ff2803e0f260
+Author: Victoria Litvinova <Admin@dhcp-gs-3161.eduroam.cornell.edu>
+Date:   Mon Nov 28 22:53:10 2016 -0500
+
+    спи
+
+ student.ml   | 114 ++++++++++++++++++++++++++++-------------------------------
+ student.mli  | 109 ++++++++++++++++++++++++++++++++++++++------------------
+ student2.mli | 111 ---------------------------------------------------------
+ zombie2.mli  |  24 -------------
+ 4 files changed, 128 insertions(+), 230 deletions(-)
+
+commit 925ad8c7c2b5fbbbfd6dabe7d52ffe54dbe759cb
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Nov 28 22:53:00 2016 -0500
+
+    Edited spec in gameMap.
+
+ gameMap.ml  | 3 ++-
+ gameMap.mli | 5 +++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+commit d3fac98f16cc8e5474b908786744629b7080d001
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 22:52:21 2016 -0500
+
+    got rid of syntax errors
+
+ gameState.ml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 68f5ee770bd983cf8fae516812f61f96049fa12f
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 22:49:14 2016 -0500
+
+    made gameState look nicer
+
+ gameState.ml | 404 ++++++++++++++++++++++++++---------------------------------
+ 1 file changed, 179 insertions(+), 225 deletions(-)
+
+commit 93edcf9379e233401cdd9076e675dbce0ccfa588
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 22:04:25 2016 -0500
+
+    got rid of extra student/zombie dependencies
+
+ command.ml      |   4 +-
+ gameState.ml    | 146 ++++++++++++++++++++++----------------------------------
+ test_command.ml |   1 -
+ 3 files changed, 60 insertions(+), 91 deletions(-)
+
+commit c037bbf9b276507f3a7695d192d704290b7bf5c7
+Author: Victoria Litvinova <Admin@dhcp-gs-3161.eduroam.cornell.edu>
+Date:   Mon Nov 28 22:00:41 2016 -0500
+
+    sings softly in the background
+
+ student.ml  | 96 +++++++++++++++++++++++++++++++++++++++++--------------------
+ student.mli |  7 +++++
+ zombie.ml   | 40 ++++++++++++++++++++------
+ zombie.mli  | 15 +++++-----
+ 4 files changed, 110 insertions(+), 48 deletions(-)
+
+commit f931d8a67a01d2569499f9c7a5dc9f4707b66916
+Merge: 592f0b7 beb19dc
+Author: Victoria Litvinova <Admin@dhcp-ccc-3876.eduroam.cornell.edu>
+Date:   Mon Nov 28 18:56:02 2016 -0500
+
+    Merge branch 'master' of https://github.coecis.cornell.edu/la334/3110project
+    "how many times are we merging"
+
+commit 592f0b75a5d71006fa29df91746caae46e2bb24a
+Author: Victoria Litvinova <Admin@dhcp-ccc-3876.eduroam.cornell.edu>
+Date:   Mon Nov 28 18:55:52 2016 -0500
+
+    some giggles and shit
+
+ student.ml  | 104 +++++++++++++++++++++++++++++++++++++++++++++++++++++-------
+ student.mli |  67 +++++++++++++++++++++------------------
+ 2 files changed, 129 insertions(+), 42 deletions(-)
+
+commit beb19dcfc71a967454c6ffbba10c50298ea698af
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 17:50:44 2016 -0500
+
+    command tests exists
+
+ _build/_digests                |   7 -------
+ _build/_log                    |  22 ----------------------
+ _build/command.cmi             | Bin 1387 -> 0 bytes
+ _build/command.mli             |  30 ------------------------------
+ _build/command.mli.depends     |   1 -
+ _build/ocamlc.where            |   1 -
+ _build/test.ml                 |   6 ------
+ _build/test.ml.depends         |   1 -
+ _build/test_command.ml         |   6 ------
+ _build/test_command.ml.depends |   1 -
+ 10 files changed, 75 deletions(-)
+
+commit 830ba9b44a85657ee7aa909aae8ffc0ab52a3ef2
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 17:45:08 2016 -0500
+
+    added test for command
+
+ _build/_digests                |   7 +++++++
+ _build/_log                    |  22 ++++++++++++++++++++++
+ _build/command.cmi             | Bin 0 -> 1387 bytes
+ _build/command.mli             |  30 ++++++++++++++++++++++++++++++
+ _build/command.mli.depends     |   1 +
+ _build/ocamlc.where            |   1 +
+ _build/test.ml                 |   6 ++++++
+ _build/test.ml.depends         |   1 +
+ _build/test_command.ml         |   6 ++++++
+ _build/test_command.ml.depends |   1 +
+ command.ml                     |   2 +-
+ command.mli                    |   2 +-
+ test.ml                        |   2 +-
+ test_command.ml                |   6 ++++++
+ test_memory.ml                 |   1 -
+ 15 files changed, 84 insertions(+), 4 deletions(-)
+
+commit 6fc13e705b0e2072aa2a42cd554c01c7f4cdd136
+Author: Victoria Litvinova <Admin@dhcp-ccc-3876.eduroam.cornell.edu>
+Date:   Mon Nov 28 17:41:06 2016 -0500
+
+    both compile
+
+ student.ml | 78 ++++++++++++++++++++++++++++++++++++--------------------------
+ zombie.ml  | 49 +++++++++++----------------------------
+ 2 files changed, 59 insertions(+), 68 deletions(-)
+
+commit acf3d63240dc8365f65b48de430c25ffb1e01234
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 16:37:13 2016 -0500
+
+    gameState should be done-ish now?
+
+ gameState.ml | 44 +++++++++++++++++---------------------------
+ 1 file changed, 17 insertions(+), 27 deletions(-)
+
+commit 36aa8400eb1e311acd69ec02935f6dc5b23edf8a
+Merge: 2154a60 8a94673
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 15:56:21 2016 -0500
+
+    Merge branch 'master' of https://github.coecis.cornell.edu/la334/3110project
+    "blah"
+
+commit 2154a60549e3d2a009b0a142bd58811cdc42fc63
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 15:55:54 2016 -0500
+
+    zombie locations should be okay in gameState
+
+ gameState.ml | 11 +++++++----
+ zombie.mli   |  2 ++
+ 2 files changed, 9 insertions(+), 4 deletions(-)
+
+commit 8a9467360acf62b7f91e9613698f62b70f80eb60
+Merge: 7911c17 783de00
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Nov 28 15:52:22 2016 -0500
+
+    Image map into folder.Merge branch 'master' of https://github.coecis.cornell.edu/la334/3110project
+
+commit 7911c17f8c06ecd54cdc35c566290817893a7df5
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Nov 28 15:52:08 2016 -0500
+
+    Inserted map image into directory.
+
+ Game Map.png | Bin 0 -> 373235 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 783de006f8926ad6442c3b977751eea7594dfa95
+Merge: 8c1355d c3e27bd
+Author: Victoria Litvinova <Admin@dhcp-rhodes-1894.eduroam.cornell.edu>
+Date:   Mon Nov 28 15:40:00 2016 -0500
+
+    Merge branch 'master' of https://github.coecis.cornell.edu/la334/3110project
+    "why am i merging again"
+
+commit 8c1355dd20e690dc26471c0b4aaef496b0ec78de
+Author: Victoria Litvinova <Admin@dhcp-rhodes-1894.eduroam.cornell.edu>
+Date:   Mon Nov 28 15:39:53 2016 -0500
+
+    some things
+
+ student.ml | 28 +++++++++++++++-------------
+ zombie.ml  | 12 ++++++------
+ 2 files changed, 21 insertions(+), 19 deletions(-)
+
+commit c3e27bd30ce610cf258709b197c28af30fc04dce
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 14:43:00 2016 -0500
+
+    nvm should be okay now
+
+ gameState.ml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 209baff2af12692fd0199f1da631055d0b9bdc80
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 14:40:58 2016 -0500
+
+    gameState done except for the whole zombie location thing
+
+ gameState.ml | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+commit 772f52595b682dc1c9ff1dc2a997040dcf1f0fa9
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Nov 28 14:19:37 2016 -0500
+
+    Merging process.
+
+ _build/_digests |  0
+ _build/_log     | 16 ----------------
+ gui.mli         |  4 +++-
+ 3 files changed, 3 insertions(+), 17 deletions(-)
+
+commit 3fb1921bef66ab962bbccb6c70511464e3ea3c14
+Merge: 5772ef6 5607bdb
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Nov 28 14:18:14 2016 -0500
+
+    Merging files. Merge branch 'master' of https://github.coecis.cornell.edu/la334/3110project
+
+commit 5772ef618963c33dc0715838c696180df3f75f7a
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Nov 28 14:17:59 2016 -0500
+
+    Changed makefile for subdirectories, adding function and specification to gamemap mli and ml, and gui and main. Will change the structure of our game after this push by putting repl and stuff inside main.ml, and changing the MDD to remove circular dependencies.
+
+ Makefile    |  2 +-
+ gameMap.ml  |  8 +++-----
+ gameMap.mli |  4 +++-
+ gui.mli     |  4 +---
+ main.ml     | 31 ++++++++++++++++++++-----------
+ 5 files changed, 28 insertions(+), 21 deletions(-)
+
+commit 5607bdb6517a2531999ae2e3071b154a75299cd0
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 13:15:51 2016 -0500
+
+    okay should've fixed the removing thing now
+
+ _build/_digests |  0
+ _build/_log     | 16 ++++++++++++++++
+ gameState.ml    | 14 ++++++++++----
+ test.ml         |  6 ++++++
+ test_gameMap.ml |  6 ++++++
+ test_memory.ml  |  6 ++++++
+ 6 files changed, 44 insertions(+), 4 deletions(-)
+
+commit 0bf0cbdfd6152f9b91edf570fc552d7127e8b26d
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 13:07:02 2016 -0500
+
+    i lied it's fixed now
+
+ test.ml         | 6 ------
+ test_gameMap.ml | 6 ------
+ test_memory.ml  | 6 ------
+ 3 files changed, 18 deletions(-)
+
+commit 5fdf77c34ef6e4fe412c000379fd44b869eef635
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 13:01:06 2016 -0500
+
+    made clean
+
+ _build/_digests                |  38 -----
+ _build/_log                    |  63 ---------
+ _build/command.cmi             | Bin 1386 -> 0 bytes
+ _build/command.mli             |  30 ----
+ _build/command.mli.depends     |   1 -
+ _build/gameMap.cmi             | Bin 1566 -> 0 bytes
+ _build/gameMap.cmo             | Bin 8158 -> 0 bytes
+ _build/gameMap.ml              |  47 -------
+ _build/gameMap.ml.depends      |   1 -
+ _build/gameMap.mli             |  49 -------
+ _build/gameMap.mli.depends     |   1 -
+ _build/gameState.cmi           | Bin 1048 -> 0 bytes
+ _build/gameState.ml            | 308 -----------------------------------------
+ _build/gameState.ml.depends    |   1 -
+ _build/gameState.mli           |  51 -------
+ _build/gameState.mli.depends   |   1 -
+ _build/gui.cmi                 | Bin 1285 -> 0 bytes
+ _build/gui.mli                 |  37 -----
+ _build/gui.mli.depends         |   1 -
+ _build/memory.cmi              | Bin 531 -> 0 bytes
+ _build/memory.cmo              | Bin 2242 -> 0 bytes
+ _build/memory.ml               |   9 --
+ _build/memory.ml.depends       |   1 -
+ _build/memory.mli              |   7 -
+ _build/memory.mli.depends      |   1 -
+ _build/ocamlc.where            |   1 -
+ _build/student.cmi             | Bin 1965 -> 0 bytes
+ _build/student.mli             |  98 -------------
+ _build/student.mli.depends     |   1 -
+ _build/test.cmi                | Bin 1221 -> 0 bytes
+ _build/test.cmo                | Bin 2880 -> 0 bytes
+ _build/test.ml                 |   6 -
+ _build/test.ml.depends         |   1 -
+ _build/test_gameMap.cmi        | Bin 1033 -> 0 bytes
+ _build/test_gameMap.cmo        | Bin 2350 -> 0 bytes
+ _build/test_gameMap.ml         |   6 -
+ _build/test_gameMap.ml.depends |   1 -
+ _build/test_memory.cmi         | Bin 1171 -> 0 bytes
+ _build/test_memory.cmo         | Bin 2486 -> 0 bytes
+ _build/test_memory.ml          |   6 -
+ _build/test_memory.ml.depends  |   1 -
+ _build/zombie.cmi              | Bin 691 -> 0 bytes
+ _build/zombie.mli              |  20 ---
+ _build/zombie.mli.depends      |   1 -
+ 44 files changed, 789 deletions(-)
+
+commit b0ecd282a6d9171a8da6307d035abf03eecb265e
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Nov 28 12:53:02 2016 -0500
+
+    got rid of get_inv_names and added item amounts to display
+
+ _build/_digests                |  38 +++++
+ _build/_log                    |  63 +++++++++
+ _build/command.cmi             | Bin 0 -> 1386 bytes
+ _build/command.mli             |  30 ++++
+ _build/command.mli.depends     |   1 +
+ _build/gameMap.cmi             | Bin 0 -> 1566 bytes
+ _build/gameMap.cmo             | Bin 0 -> 8158 bytes
+ _build/gameMap.ml              |  47 +++++++
+ _build/gameMap.ml.depends      |   1 +
+ _build/gameMap.mli             |  49 +++++++
+ _build/gameMap.mli.depends     |   1 +
+ _build/gameState.cmi           | Bin 0 -> 1048 bytes
+ _build/gameState.ml            | 308 +++++++++++++++++++++++++++++++++++++++++
+ _build/gameState.ml.depends    |   1 +
+ _build/gameState.mli           |  51 +++++++
+ _build/gameState.mli.depends   |   1 +
+ _build/gui.cmi                 | Bin 0 -> 1285 bytes
+ _build/gui.mli                 |  37 +++++
+ _build/gui.mli.depends         |   1 +
+ _build/memory.cmi              | Bin 0 -> 531 bytes
+ _build/memory.cmo              | Bin 0 -> 2242 bytes
+ _build/memory.ml               |   9 ++
+ _build/memory.ml.depends       |   1 +
+ _build/memory.mli              |   7 +
+ _build/memory.mli.depends      |   1 +
+ _build/ocamlc.where            |   1 +
+ _build/student.cmi             | Bin 0 -> 1965 bytes
+ _build/student.mli             |  98 +++++++++++++
+ _build/student.mli.depends     |   1 +
+ _build/test.cmi                | Bin 0 -> 1221 bytes
+ _build/test.cmo                | Bin 0 -> 2880 bytes
+ _build/test.ml                 |   6 +
+ _build/test.ml.depends         |   1 +
+ _build/test_gameMap.cmi        | Bin 0 -> 1033 bytes
+ _build/test_gameMap.cmo        | Bin 0 -> 2350 bytes
+ _build/test_gameMap.ml         |   6 +
+ _build/test_gameMap.ml.depends |   1 +
+ _build/test_memory.cmi         | Bin 0 -> 1171 bytes
+ _build/test_memory.cmo         | Bin 0 -> 2486 bytes
+ _build/test_memory.ml          |   6 +
+ _build/test_memory.ml.depends  |   1 +
+ _build/zombie.cmi              | Bin 0 -> 691 bytes
+ _build/zombie.mli              |  20 +++
+ _build/zombie.mli.depends      |   1 +
+ command.ml                     |   2 +-
+ gameState.ml                   |  15 +-
+ 46 files changed, 801 insertions(+), 5 deletions(-)
+
+commit 09e1c485b68d7b021e2a5faf65b3b474f32f0ccf
+Author: Victoria Litvinova <Admin@dhcp-rhodes-895.eduroam.cornell.edu>
+Date:   Sun Nov 27 17:18:14 2016 -0500
+
+    blah2
+
+ student.ml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 2a52688434b68977018cc3cb85d1b5892d5f5d7c
+Author: Victoria Litvinova <Admin@dhcp-rhodes-895.eduroam.cornell.edu>
+Date:   Sun Nov 27 17:16:38 2016 -0500
+
+    blah
+
+ student.ml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit c1f1f45946867fce5ff6e9fc7b1c1c5951279e13
+Author: Victoria Litvinova <Admin@dhcp-mcfad-32.eduroam.cornell.edu>
+Date:   Sun Nov 27 05:40:38 2016 -0500
+
+    finished student and zombie without Dijkstra's
+
+ student.ml | 20 ++++++++---------
+ zombie.ml  | 74 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 84 insertions(+), 10 deletions(-)
+
+commit e4d94452129223352d6821f052f1bda980061c29
+Merge: 5d625fb 4580c1d
+Author: Victoria Litvinova <Admin@dhcp-mcfad-32.eduroam.cornell.edu>
+Date:   Sun Nov 27 03:28:57 2016 -0500
+
+    "Idk but its merging"
+    Merge branch 'master' of https://github.coecis.cornell.edu/la334/3110project
+
+commit 5d625fbf24e82d59597e016f10861a27c2225aac
+Author: Victoria Litvinova <Admin@dhcp-mcfad-32.eduroam.cornell.edu>
+Date:   Sun Nov 27 03:28:39 2016 -0500
+
+    basically done with student
+
+ student.ml | 96 +++++++++++++++++++++++++++++++++++++++++---------------------
+ 1 file changed, 63 insertions(+), 33 deletions(-)
+
+commit 4580c1dc743341a7c24b3c753822b7471b77f9c2
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Nov 27 02:05:36 2016 -0500
+
+    Finished map ml and mli, except implementation of initialization and distance between two locations.
+
+ gameMap.ml  | 56 +++++++++++++++--------------------------------------
+ gameMap.mli | 64 ++++++++++++++++++++++++++++++-------------------------------
+ 2 files changed, 46 insertions(+), 74 deletions(-)
+
+commit 34de96a4cd02fa65861b1bad3065326c1574c1db
+Author: Erick P <ubuntu@csvm>
+Date:   Sat Nov 26 20:03:21 2016 -0500
+
+    Working on add_item. Need to initialize map still and distance.
+
+ gameMap.ml | 25 +++++++++++++++++++------
+ 1 file changed, 19 insertions(+), 6 deletions(-)
+
+commit 119eb8dd08e5bbf6f705ff0470f2b6e8e19900db
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sat Nov 26 16:34:48 2016 -0500
+
+    changed at least part of gameState to accomodate for students being an association list now, remember to change mlis!
+
+ gameState.ml | 30 +++++++++++++++---------------
+ student.mli  |  4 ++--
+ 2 files changed, 17 insertions(+), 17 deletions(-)
+
+commit ffadd9a909e6758897ed3d63f73bf6180ed13be3
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sat Nov 26 16:25:06 2016 -0500
+
+    i lied command should be done now
+
+ command.ml   | 1 +
+ gameState.ml | 4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+commit beecc15cc209644d6feac8b47b6f0dd5aaa49902
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sat Nov 26 16:22:59 2016 -0500
+
+    finished out command.ml
+
+ command.ml | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+commit 85b8702a65e936265a5d1cd919ebbb24beba6db9
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Nov 28 02:57:42 2016 -0500
+
+    Fixed syntax errors in gameState. Some temporary fixes were made which we need to fix.
+
+ gameMap.ml   | 10 +++++++---
+ gameMap.mli  |  4 +++-
+ gameState.ml | 29 +++++++++++++++--------------
+ memory.ml    |  9 +++++++++
+ memory.mli   |  1 -
+ student.mli  |  2 +-
+ test.ml      |  2 ++
+ zombie.mli   |  6 +++---
+ 8 files changed, 40 insertions(+), 23 deletions(-)
+
+commit 30a1ab4973c872327dca2b189b8410c46bdba609
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Nov 28 02:20:05 2016 -0500
+
+    Added testing, a make file, changed mli files a bit to compile with ocamlbuild, and a main module to run the game from the Makefile.
+
+ Makefile        |  8 ++++++++
+ gameState.ml    | 24 +++++++++++-------------
+ gameState.mli   | 10 ++++------
+ main.ml         | 37 +++++++++++++++++++++++++++++++++++++
+ student.mli     |  2 +-
+ test.ml         |  4 ++++
+ test_gameMap.ml |  6 ++++++
+ test_memory.ml  |  6 ++++++
+ 8 files changed, 77 insertions(+), 20 deletions(-)
+
+commit 5136570a3288cd1477ced64a40fe9317d5dbd54d
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Nov 27 06:37:41 2016 -0500
+
+    Fixed type bugs. Added parenthesis for tuples where needed to avoid interpretation errors.
+
+ gameMap.ml  | 6 +++---
+ gameMap.mli | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+commit 71eebe04c721fbd3af9ea9c254b2753a81017eac
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sat Nov 26 16:16:54 2016 -0500
+
+    gameState is practically done
+
+ gameState.ml | 124 +++++++++++++++++++++++++++++++++++++++++------------------
+ student.ml   |  26 ++++++-------
+ student.mli  |   2 +
+ 3 files changed, 101 insertions(+), 51 deletions(-)
+
+commit 253ecd8d45d93053fbf9673bec816ade4e626fa7
+Author: Ubuntu <ubuntu@csvm>
+Date:   Fri Nov 25 20:46:19 2016 -0500
+
+    removed time.mli??
+
+ time.mli | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit eccfbb3d6d076438e5dced9a527be2ca5339917a
+Author: Victoria Litvinova <Admin@Victorias-MacBook-Pro.local>
+Date:   Sat Nov 26 03:36:48 2016 -0500
+
+    almost done with overworld student
+
+ student.ml | 102 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 102 insertions(+)
+
+commit 198ccf6e3d7a9dd3cb38c97fe5181e02521e9368
+Author: Erick P <ubuntu@csvm>
+Date:   Sat Nov 26 02:53:24 2016 -0500
+
+    Added gameMap.ml and started on functions. Edited specs to my taste and format, trying to confirm with teammates if this is fine or not at this point. Need to know how to exactly initialize too. What do we want?
+
+ gameMap.ml | 56 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ memory.ml  |  0
+ time.mli   |  0
+ 3 files changed, 56 insertions(+)
+
+commit 82ce4a0134c87ea79728f5c8e4e4a9faf2511097
+Author: Victoria Litvinova <Admin@Victorias-MacBook-Pro.local>
+Date:   Sat Nov 26 00:20:28 2016 -0500
+
+    I need coffee
+
+ gameState.ml | 154 ++++++++++++++++++++++++++++-------------------------------
+ 1 file changed, 72 insertions(+), 82 deletions(-)
+
+commit 712554e0c13c3e51ced7f431c2893277ee98caf3
+Author: Ubuntu <ubuntu@csvm>
+Date:   Fri Nov 25 20:43:46 2016 -0500
+
+    added more implementation of gameState, added student2 and zombie2 mlis bc they seem more relevant than our originals
+
+ gameMap.mli  |  10 +++---
+ gameState.ml |  96 ++++++++++++++++++++++++++++++++++++++++++++++++++-
+ student2.mli | 111 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ zombie2.mli  |  24 +++++++++++++
+ 4 files changed, 235 insertions(+), 6 deletions(-)
+
+commit df2e2355dd6bef1598c5067dfd73ba162d13a957
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 24 18:59:54 2016 -0500
+
+    more helper implementations in gameState.ml
+
+ command.ml   | 46 +++++++++++++++-------------------
+ command.mli  | 17 ++++---------
+ gameState.ml | 82 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 3 files changed, 106 insertions(+), 39 deletions(-)
+
+commit a49186c2eadfe72baf86afdb917777f3de9f118f
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 24 18:13:48 2016 -0500
+
+    added some implementation of helpers in gameState
+
+ gameState.ml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit e2b16ad98c41939c17df564342a9d81d7f7310bf
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 24 18:11:37 2016 -0500
+
+    added part of end_game
+
+ gameState.ml | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+commit 46295b2da182e9daacfc9ebee2679cc98b26cac2
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 24 18:06:12 2016 -0500
+
+    added skeletons for some helpers in gameState
+
+ gameState.ml | 18 +++++++++++++++++-
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+
+commit 889fd5defa89472da3fe8a22dce5dbe1b0dd6fac
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 24 17:59:28 2016 -0500
+
+    Added code for main
+
+ gameState.ml | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+commit 1b1a347a26094ca5a45689a736572c7b59871534
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 24 17:49:43 2016 -0500
+
+    added some code for run_game
+
+ gameState.ml  | 20 +++++++++++++++-----
+ gameState.mli |  8 ++++----
+ 2 files changed, 19 insertions(+), 9 deletions(-)
+
+commit dfdb5650573606bcfb8777b1629f51be4a2af176
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 24 17:25:03 2016 -0500
+
+    did more with command and put most of the call to new_game in
+
+ command.ml   | 16 +++++++++++++++-
+ gameState.ml |  3 ++-
+ 2 files changed, 17 insertions(+), 2 deletions(-)
+
+commit 72a20edfed9aaeffc00bdc272a708726bffd4f80
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 24 12:31:57 2016 -0500
+
+    created gameState.ml
+
+ gameState.ml  | 53 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ gameState.mli |  1 +
+ 2 files changed, 54 insertions(+)
+
+commit 58b06ffe7baa66c930e54ee2a992d75adf9ee85e
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 24 12:26:38 2016 -0500
+
+    ?
+
+ gameState.mli | 16 ----------------
+ 1 file changed, 16 deletions(-)
+
+commit b047e6747bc6d89256d6f971777c3e1d7d66777a
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 24 12:25:10 2016 -0500
+
+    moved update type into command
+
+ command.ml    | 16 ++++++++++++++++
+ command.mli   | 16 ++++++++++++++++
+ gameState.mli |  6 +++---
+ 3 files changed, 35 insertions(+), 3 deletions(-)
+
+commit ce6e22061da00e0818291f22034c85cdd44ff1b7
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 24 00:49:48 2016 -0500
+
+    implemented part of command.ml
+
+ command.ml  | 45 +++++++++++++++++++++++++++++++++++++++++++++
+ command.mli |  2 +-
+ 2 files changed, 46 insertions(+), 1 deletion(-)
+
+commit 743cd16606dea2a3166cd988a49cdbe904322115
+Author: Ubuntu <ubuntu@csvm>
+Date:   Wed Nov 23 22:15:35 2016 -0500
+
+    changed type of Fight update
+
+ gameState.mli | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 571658a9bdd3b8ce1860dd5356a8506ed6970444
+Author: Ubuntu <ubuntu@csvm>
+Date:   Wed Nov 23 22:09:23 2016 -0500
+
+    Added a few changes to gameState.mli
+
+ gameState.mli | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+commit 76a3844db5effa00811186c0f1eeecb63ef396d0
+Author: Ubuntu <ubuntu@csvm>
+Date:   Wed Nov 23 20:55:47 2016 -0500
+
+    Changed updat4e TeamMove type
+
+ gameState.mli | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit 7c8f42e277264349aec98d7351406a54df4ab4e1
+Author: Ubuntu <ubuntu@csvm>
+Date:   Wed Nov 23 20:43:28 2016 -0500
+
+    Added Charge update type
+
+ command.mli   | 18 +-----------------
+ gameState.mli |  5 +++--
+ 2 files changed, 4 insertions(+), 19 deletions(-)
+
+commit d8f037c319f89d9c7f4fd4995db709c3073e1b28
+Author: Ubuntu <ubuntu@csvm>
+Date:   Wed Nov 23 20:17:55 2016 -0500
+
+    added main to gameState spec
+
+ gameState.mli | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+commit cb424fb1d853854fe251cddc86cc27fe5a425169
+Author: Ubuntu <ubuntu@csvm>
+Date:   Wed Nov 23 20:13:02 2016 -0500
+
+    updated a spec in command again
+
+ command.mli | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
+
+commit 1c6a037e161d8e56314d905fd46646bb3c44c94a
+Author: Ubuntu <ubuntu@csvm>
+Date:   Wed Nov 23 20:06:53 2016 -0500
+
+    switched a spec in command
+
+ command.mli | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d3e343eef3bacdfac0c7702bafe40f2b4d6e101e
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Nov 13 16:23:56 2016 -0500
+
+    changed command
+
+ command.mli | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
+
+commit 083a7bb6efe5492ee6657b3049993fe64ba64e8e
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Nov 13 16:03:04 2016 -0500
+
+    changed gameState and gameMap
+
+ gameMap.mli   | 9 +++++++++
+ gameState.mli | 5 ++---
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+commit ad766263e0562891c2db3db6781d03adc8029d04
+Author: Victoria Litvinova <Admin@dhcp-hol-4935.eduroam.cornell.edu>
+Date:   Sun Nov 13 15:54:42 2016 -0500
+
+    BATTERIES FOR ALL
+
+ student.mli | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+commit 213a1f3a5eca2db94cd81089a1ee40f234a4b12c
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 10 05:37:39 2016 -0500
+
+    removed npc
+
+ npc.mli | 27 ---------------------------
+ 1 file changed, 27 deletions(-)
+
+commit df3083fef0cf8402bdfe8c7ea4267b5b3ada35b4
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 10 04:54:31 2016 -0500
+
+    gui.mli specs
+
+ gui.mli | 38 +++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 37 insertions(+), 1 deletion(-)
+
+commit 6747fdc1a39e32d88fbf4cbb3f84a5407faba7cd
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 10 04:48:45 2016 -0500
+
+    changed some formattign
+
+ student.mli | 38 ++++++++++++++++++--------------------
+ zombie.mli  | 12 +++++-------
+ 2 files changed, 23 insertions(+), 27 deletions(-)
+
+commit 2ca9f276c01a94ee6ac0eb03a5da41fa5bbd8d69
+Author: Victoria Litvinova <Admin@Victorias-MacBook-Pro.local>
+Date:   Thu Nov 10 04:37:21 2016 -0500
+
+     hi
+
+ student.mli | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 305a0658649d81aae82a54ea2c4176a35c83d3f9
+Author: Victoria Litvinova <Admin@Victorias-MacBook-Pro.local>
+Date:   Thu Nov 10 04:36:36 2016 -0500
+
+    bruhh
+
+ zombie.mli | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit add44f375d9835debe101c806a50d184c3650cbd
+Author: Victoria Litvinova <Admin@Victorias-MacBook-Pro.local>
+Date:   Thu Nov 10 04:34:38 2016 -0500
+
+    the number of times i try to save something on subline using :wq
+
+ student.mli | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+commit 4c2769e08ef0ce5b6c2f580e8faf230831db71a8
+Author: Victoria Litvinova <Admin@Victorias-MacBook-Pro.local>
+Date:   Thu Nov 10 04:30:03 2016 -0500
+
+    Can we sleep?
+
+ student.mli | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 95bf85654c8465a44ca7fecfc47101542ac437bf
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 10 04:27:16 2016 -0500
+
+    ???
+
+ command.mli   |  9 +++++++--
+ gameMap.mli   | 39 ++++++++++++++++++++++++++++++++++++++-
+ gameState.mli |  7 +++----
+ 3 files changed, 48 insertions(+), 7 deletions(-)
+
+commit ad6d368c999194ff3a2be013276253f1bab6e657
+Author: Erick P <ubuntu@csvm>
+Date:   Thu Nov 10 04:16:49 2016 -0500
+
+    Removing time.mli. Changing from a real-time-based game to a turn-based-time  game.
+
+ time.mli | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 5b83d716a11292b1418bb8196c4c9887a4b0411b
+Author: Victoria Litvinova <Admin@Victorias-MacBook-Pro.local>
+Date:   Thu Nov 10 04:09:13 2016 -0500
+
+    Zombs
+
+ zombie.mli | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 13a08fbcccaa95f90ead75f52d715db9f12fdf0b
+Author: Victoria Litvinova <Admin@Victorias-MacBook-Pro.local>
+Date:   Thu Nov 10 04:02:44 2016 -0500
+
+    Zombs
+
+ zombie.mli | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+commit fdbefdc25720b0f7f7efe3f4494ee0f8f0be81c4
+Author: Victoria Litvinova <Admin@Victorias-MacBook-Pro.local>
+Date:   Thu Nov 10 03:59:25 2016 -0500
+
+    Students
+
+ student.mli | 80 +++++++++++++++++++++++++++++++++++++------------------------
+ 1 file changed, 49 insertions(+), 31 deletions(-)
+
+commit 8966aa6e8a69793dbe5aa64ae65839b6782c0e9d
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 10 02:43:56 2016 -0500
+
+    ?
+
+ gameMap.mli   | 4 +++-
+ gameState.mli | 1 -
+ location.mli  | 0
+ memory.mli    | 5 ++++-
+ 4 files changed, 7 insertions(+), 3 deletions(-)
+
+commit 3ca4fab445a18458c9feed125f496ab93f0be49a
+Author: Erick P <ubuntu@csvm>
+Date:   Thu Nov 10 02:15:23 2016 -0500
+
+    Added memory.mli functions. Need to write specifications. Slightly modified specs on gamestate
+
+ gameState.mli | 8 +++-----
+ memory.mli    | 4 +++-
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+commit fb20953ae5181956a4af81b55c8bbd8a77351c9d
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 10 01:38:05 2016 -0500
+
+    command fixed
+
+ command.mli   | 14 +++-----------
+ gameState.mli | 20 ++++++++++++++++++--
+ memory.mli    |  3 +++
+ 3 files changed, 24 insertions(+), 13 deletions(-)
+
+commit 834407a1e5489ed0e5b3f1b7281e9a2bae11d9d4
+Author: Ubuntu <ubuntu@csvm>
+Date:   Thu Nov 10 01:05:56 2016 -0500
+
+    finished command
+
+ action.mli    |  1 -
+ command.mli   | 35 +++++++++++++++++++++++++++++++++++
+ gameState.mli |  3 +--
+ input.mli     | 19 -------------------
+ 4 files changed, 36 insertions(+), 22 deletions(-)
+
+commit 9f774807b1ec3892064ce650c2457468066b8de2
+Author: Victoria Litvinova <Admin@dhcp-ccc-1339.eduroam.cornell.edu>
+Date:   Thu Nov 10 00:43:20 2016 -0500
+
+    bruh
+
+ npc.mli     |  4 ++--
+ student.mli | 33 ++++++++++++++++++++++++---------
+ zombie.mli  |  5 +++--
+ 3 files changed, 29 insertions(+), 13 deletions(-)
+
+commit 29e9dc576b1eae5249ff21729ff0a71ef123daf2
+Author: Ubuntu <ubuntu@csvm>
+Date:   Wed Nov 9 23:24:46 2016 -0500
+
+    modified input
+
+ gameState.mli | 2 +-
+ input.mli     | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+commit a8ce57a0bac34a7af92e87e0ea9dc385c0db9bf2
+Author: Ubuntu <ubuntu@csvm>
+Date:   Wed Nov 9 22:37:55 2016 -0500
+
+    input mli done
+
+ gameState.mli |  4 ++--
+ input.mli     | 21 +++++++++++++++++----
+ 2 files changed, 19 insertions(+), 6 deletions(-)
+
+commit 92e5e90ad02d8d85c997690b8e300a73b90325ad
+Author: Ubuntu <ubuntu@csvm>
+Date:   Wed Nov 9 22:19:07 2016 -0500
+
+    fixed gameState mli
+
+ gameState.mli | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+commit 7dd4ce6331dda2b5d9befd9cfde06e820fdb2179
+Author: Ubuntu <ubuntu@csvm>
+Date:   Wed Nov 9 22:11:28 2016 -0500
+
+    mli for gameState
+
+ gameState.mli | 35 ++++++++++++++++++++++++++++++++++-
+ gui.mli       |  1 +
+ input.mli     |  6 ++++++
+ 3 files changed, 41 insertions(+), 1 deletion(-)
+
+commit a309c5359e9185279edf018e039ec76f7432c46b
+Author: Ubuntu <ubuntu@csvm>
+Date:   Wed Nov 9 18:35:30 2016 -0500
+
+    Got rid of human.mli
+
+ human.mli | 54 ------------------------------------------------------
+ 1 file changed, 54 deletions(-)
+
+commit 8e4a4c133ce3d727b3d10dffa95c8aabc39964ff
+Author: Victoria Litvinova <Admin@dhcp-hol-5263.eduroam.cornell.edu>
+Date:   Wed Nov 9 20:15:35 2016 -0500
+
+    Dying in work rn
+
+ human.mli   | 40 ++++++++++++++++++++++------------------
+ npc.mli     | 25 ++++++++++++++-----------
+ student.mli | 61 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ zombie.mli  | 23 +++++++++++++----------
+ 4 files changed, 110 insertions(+), 39 deletions(-)
+
+commit f50966e359acb1d843b8ca78b8c03517732457e4
+Author: Victoria Litvinova <Admin@dhcp-clara-7011.eduroam.cornell.edu>
+Date:   Wed Nov 9 18:03:15 2016 -0500
+
+    cries about democracy
+
+ human.mli  | 38 ++++++++++++++++++++++++++++++++------
+ npc.mli    | 25 ++++++++++++++++++++++---
+ zombie.mli | 23 ++++++++++-------------
+ 3 files changed, 64 insertions(+), 22 deletions(-)
+
+commit 783cb2723bdd01e8b7d637d1dc2704bbf09cfc47
+Author: Victoria Litvinova <Admin@dhcp-clara-7011.eduroam.cornell.edu>
+Date:   Wed Nov 9 17:57:36 2016 -0500
+
+    So
+
+ human.mli  | 24 ++++++++++++++++++++++++
+ npc.mli    |  7 +++++--
+ zombie.mli | 18 ++++++++++++++++++
+ 3 files changed, 47 insertions(+), 2 deletions(-)
+
+commit fdfea078df854c176da4d3a6206602a8b2cddf36
+Author: Ubuntu <ubuntu@csvm>
+Date:   Wed Nov 9 16:36:56 2016 -0500
+
+    Fixed opens
+
+ action.mli    |  1 +
+ gameMap.mli   |  1 +
+ gameState.mli | 10 ++++++++++
+ npc.mli       |  2 ++
+ 4 files changed, 14 insertions(+)
+
+commit e94107a72d6c3b8fe5902e11f6b3a3ec9e426a68
+Author: Ubuntu <ubuntu@csvm>
+Date:   Wed Nov 9 16:01:42 2016 -0500
+
+    Added empty mlis
+
+ action.mli    | 0
+ gameMap.mli   | 0
+ gameState.mli | 0
+ gui.mli       | 0
+ input.mli     | 0
+ location.mli  | 0
+ memory.mli    | 0
+ npc.mli       | 0
+ student.mli   | 0
+ time.mli      | 0
+ zombie.mli    | 0
+ 11 files changed, 0 insertions(+), 0 deletions(-)
+
+commit ab10a386d955816ecaff8a71c2f0da8437616b41
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 07:22:26 2016 -0500
+
+    specifications for gui
+
+ gui.ml  | 40 +++++++++++++++++++++++++++-------------
+ gui.mli | 16 ++++++++--------
+ 2 files changed, 35 insertions(+), 21 deletions(-)
+
+commit de33c2a7149c4d45457fa9307bae66fa2537d7d2
+Merge: ed184cb 6d97c71
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 07:11:20 2016 -0500
+
+    Merge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit ed184cbb425a5cfc63937c7a2b97754d2cd4c999
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 07:11:02 2016 -0500
+
+    almost there
+
+ _build/_digests              |  52 ------
+ _build/_log                  |  78 ---------
+ _build/command.cmi           | Bin 1463 -> 0 bytes
+ _build/command.cmo           | Bin 9623 -> 0 bytes
+ _build/command.ml            |  75 --------
+ _build/command.ml.depends    |   1 -
+ _build/command.mli           |  64 -------
+ _build/command.mli.depends   |   1 -
+ _build/gameMap.cmi           | Bin 2759 -> 0 bytes
+ _build/gameMap.cmo           | Bin 61230 -> 0 bytes
+ _build/gameMap.ml            | 321 ----------------------------------
+ _build/gameMap.ml.depends    |   1 -
+ _build/gameMap.mli           |  79 ---------
+ _build/gameMap.mli.depends   |   1 -
+ _build/gameState.cmi         | Bin 1695 -> 0 bytes
+ _build/gameState.cmo         | Bin 30866 -> 0 bytes
+ _build/gameState.ml          | 175 -------------------
+ _build/gameState.ml.depends  |   1 -
+ _build/gameState.mli         |  67 --------
+ _build/gameState.mli.depends |   1 -
+ _build/gui.cmi               | Bin 1622 -> 0 bytes
+ _build/gui.cmo               | Bin 28164 -> 0 bytes
+ _build/gui.ml                | 186 --------------------
+ _build/gui.ml.depends        |   1 -
+ _build/gui.mli               |  42 -----
+ _build/gui.mli.depends       |   1 -
+ _build/main.byte             | Bin 4052937 -> 0 bytes
+ _build/main.cmi              | Bin 1126 -> 0 bytes
+ _build/main.cmo              | Bin 16632 -> 0 bytes
+ _build/main.ml               |  97 -----------
+ _build/main.ml.depends       |   1 -
+ _build/memory.cmi            | Bin 811 -> 0 bytes
+ _build/memory.cmo            | Bin 3332 -> 0 bytes
+ _build/memory.ml             |  15 --
+ _build/memory.ml.depends     |   1 -
+ _build/memory.mli            |  12 --
+ _build/memory.mli.depends    |   1 -
+ _build/ocamlc.where          |   1 -
+ _build/runner.cmi            | Bin 1255 -> 0 bytes
+ _build/runner.cmo            | Bin 32797 -> 0 bytes
+ _build/runner.ml             | 157 -----------------
+ _build/runner.ml.depends     |   1 -
+ _build/runner.mli            |  41 -----
+ _build/runner.mli.depends    |   1 -
+ _build/student.cmi           | Bin 4600 -> 0 bytes
+ _build/student.cmo           | Bin 68557 -> 0 bytes
+ _build/student.ml            | 400 -------------------------------------------
+ _build/student.ml.depends    |   1 -
+ _build/student.mli           | 163 ------------------
+ _build/student.mli.depends   |   1 -
+ _build/zombie.cmi            | Bin 1807 -> 0 bytes
+ _build/zombie.cmo            | Bin 23864 -> 0 bytes
+ _build/zombie.ml             | 137 ---------------
+ _build/zombie.ml.depends     |   1 -
+ _build/zombie.mli            |  50 ------
+ _build/zombie.mli.depends    |   1 -
+ main.byte                    |   1 -
+ 57 files changed, 2230 deletions(-)
+
+commit d583e0571b61c9e67a13e30e9bb0c34ef0318cab
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 07:09:22 2016 -0500
+
+    almost theregit add .!
+
+ _build/_digests              |  52 ++++++
+ _build/_log                  |  78 +++++++++
+ _build/command.cmi           | Bin 0 -> 1463 bytes
+ _build/command.cmo           | Bin 0 -> 9623 bytes
+ _build/command.ml            |  75 ++++++++
+ _build/command.ml.depends    |   1 +
+ _build/command.mli           |  64 +++++++
+ _build/command.mli.depends   |   1 +
+ _build/gameMap.cmi           | Bin 0 -> 2759 bytes
+ _build/gameMap.cmo           | Bin 0 -> 61230 bytes
+ _build/gameMap.ml            | 321 ++++++++++++++++++++++++++++++++++
+ _build/gameMap.ml.depends    |   1 +
+ _build/gameMap.mli           |  79 +++++++++
+ _build/gameMap.mli.depends   |   1 +
+ _build/gameState.cmi         | Bin 0 -> 1695 bytes
+ _build/gameState.cmo         | Bin 0 -> 30866 bytes
+ _build/gameState.ml          | 175 +++++++++++++++++++
+ _build/gameState.ml.depends  |   1 +
+ _build/gameState.mli         |  67 ++++++++
+ _build/gameState.mli.depends |   1 +
+ _build/gui.cmi               | Bin 0 -> 1622 bytes
+ _build/gui.cmo               | Bin 0 -> 28164 bytes
+ _build/gui.ml                | 186 ++++++++++++++++++++
+ _build/gui.ml.depends        |   1 +
+ _build/gui.mli               |  42 +++++
+ _build/gui.mli.depends       |   1 +
+ _build/main.byte             | Bin 0 -> 4052937 bytes
+ _build/main.cmi              | Bin 0 -> 1126 bytes
+ _build/main.cmo              | Bin 0 -> 16632 bytes
+ _build/main.ml               |  97 +++++++++++
+ _build/main.ml.depends       |   1 +
+ _build/memory.cmi            | Bin 0 -> 811 bytes
+ _build/memory.cmo            | Bin 0 -> 3332 bytes
+ _build/memory.ml             |  15 ++
+ _build/memory.ml.depends     |   1 +
+ _build/memory.mli            |  12 ++
+ _build/memory.mli.depends    |   1 +
+ _build/ocamlc.where          |   1 +
+ _build/runner.cmi            | Bin 0 -> 1255 bytes
+ _build/runner.cmo            | Bin 0 -> 32797 bytes
+ _build/runner.ml             | 157 +++++++++++++++++
+ _build/runner.ml.depends     |   1 +
+ _build/runner.mli            |  41 +++++
+ _build/runner.mli.depends    |   1 +
+ _build/student.cmi           | Bin 0 -> 4600 bytes
+ _build/student.cmo           | Bin 0 -> 68557 bytes
+ _build/student.ml            | 400 +++++++++++++++++++++++++++++++++++++++++++
+ _build/student.ml.depends    |   1 +
+ _build/student.mli           | 163 ++++++++++++++++++
+ _build/student.mli.depends   |   1 +
+ _build/zombie.cmi            | Bin 0 -> 1807 bytes
+ _build/zombie.cmo            | Bin 0 -> 23864 bytes
+ _build/zombie.ml             | 137 +++++++++++++++
+ _build/zombie.ml.depends     |   1 +
+ _build/zombie.mli            |  50 ++++++
+ _build/zombie.mli.depends    |   1 +
+ command.ml                   |   2 +
+ command.mli                  |   2 +
+ main.byte                    |   1 +
+ memory.ml                    |   2 +
+ memory.mli                   |   2 +
+ 61 files changed, 2238 insertions(+)
+
+commit 6d97c716e130545a8bd7f4f4d1bfe0ee7c19beb0
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 07:01:23 2016 -0500
+
+    game no longer crashed when defeated by zombies
+
+ runner.ml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit eefd04591680e0d22866f2b5eb2c91fa06b671a7
+Merge: d70cc10 cc73db3
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 06:57:42 2016 -0500
+
+    Merge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit d70cc10a361530e1a2e6c7a202c8c854c9790ca9
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 06:56:05 2016 -0500
+
+    game continues and prints ending message
+
+ gameState.ml | 4 ++--
+ gui.ml       | 5 +++--
+ runner.ml    | 5 ++++-
+ 3 files changed, 9 insertions(+), 5 deletions(-)
+
+commit cc73db3787ddc61524ec88588891eab2f7e57ae2
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 06:55:04 2016 -0500
+
+    almost done
+
+ gameMap.ml  | 2 ++
+ gameMap.mli | 2 ++
+ student.mli | 2 +-
+ zombie.ml   | 2 ++
+ zombie.mli  | 3 +++
+ 5 files changed, 10 insertions(+), 1 deletion(-)
+
+commit 5ba730fa2fe5d56502d05881856ae20d4d7c4c2e
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 06:47:35 2016 -0500
+
+    no warnings
+
+ gameMap.ml |  7 ++++++-
+ student.ml | 11 +++++++++--
+ zombie.ml  | 12 +++++++++---
+ 3 files changed, 24 insertions(+), 6 deletions(-)
+
+commit 6bbbf2d0b735894058df2b0201257f77527580e9
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Dec 5 06:28:11 2016 -0500
+
+    Fixed healing and eating bug. They both heal the same in our current implementation.
+
+ student.ml | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+commit 44a88e85fcd354fd29aa5675d00cfa7c71e3664b
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Dec 5 06:17:17 2016 -0500
+
+    Stop incrementing sleep with charge.
+
+ student.ml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 0f7e074b3c4e8d960bbbd5f6c5165252cfac54eb
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 06:05:52 2016 -0500
+
+    whyyy
+
+ student.ml | 9 ++++-----
+ zombie.ml  | 1 -
+ 2 files changed, 4 insertions(+), 6 deletions(-)
+
+commit 04ce7fe125a1cf260f380d6b09d88d3239b86a72
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 06:00:06 2016 -0500
+
+    here
+
+ student.ml | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+commit 49f235f57a367046dc2735f302becdb909506ea1
+Merge: a54bfb8 480e4e7
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Dec 5 05:57:57 2016 -0500
+
+    Merge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit a54bfb8e63f2753912e05538dafa8f34f8381a57
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Dec 5 05:57:43 2016 -0500
+
+    Fixing student stuff.
+
+ student.ml | 62 +++-----------------------------------------------------------
+ 1 file changed, 3 insertions(+), 59 deletions(-)
+
+commit 480e4e7631d8d710c2dba4116ec53393c1d9a1bd
+Merge: 8889270 5f7daed
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 05:45:59 2016 -0500
+
+    erge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit 8889270c07ad6d18487252dfc4c5f4dfb2d6963a
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 05:45:35 2016 -0500
+
+    gui displays team location
+
+ gui.ml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 5f7daed7f6f37486d148aeb1bc7629c4e1c24d35
+Merge: 91953cb e7e1dfe
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Dec 5 05:42:32 2016 -0500
+
+    Changes with zombie and power and stuff.
+
+commit 91953cbd8c41864908a6719b3995db5241586f0a
+Merge: 3de8423 4cb98d5
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Dec 5 05:40:08 2016 -0500
+
+    Fixing zombie stats for power. Going to change and do same in power.
+
+commit e7e1dfeec3f40a3490e3e01b95da33d87be930cc
+Merge: a1212bf 24e6fe8
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 05:38:29 2016 -0500
+
+    erge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit a1212bf60cc91e595e1a09ad6f14873ce583b41b
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 05:38:04 2016 -0500
+
+    more specifics in introduction
+
+ main.ml | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+commit 24e6fe87ae2ace461fd95fd3a757542c6196f033
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 05:37:37 2016 -0500
+
+    fixed negative
+
+ gameState.ml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 0b02745a340f78608c6b9881f5d50f98c8b9709a
+Merge: 851d9c5 6b7171a
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 05:34:43 2016 -0500
+
+    Merge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit 851d9c5c5bd8c517a8ab6fc2a66846c6ad9cbe27
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 05:34:27 2016 -0500
+
+    all specs and formatting done
+
+ student.ml      | 166 +++++++++++++++++++++++++++++++++++++++-----------------
+ student.mli     |  58 +++++++++++---------
+ test_gameMap.ml |   6 +-
+ test_student.ml | 165 ++++++++++++++++++++++++++++---------------------------
+ 4 files changed, 237 insertions(+), 158 deletions(-)
+
+commit 6b7171a2ebfc5ee19e5a10fb2508abe849e82c98
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 05:26:05 2016 -0500
+
+    flavor text
+
+ main.ml | 21 +++++++++++++++++++--
+ 1 file changed, 19 insertions(+), 2 deletions(-)
+
+commit 3de8423a29ceba2a1db39523fcc823e257d2fb19
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Dec 5 04:39:33 2016 -0500
+
+    Fixed battery and fullness bugs.
+
+ gameMap.ml |  3 +--
+ student.ml | 19 +++++++++++++------
+ zombie.ml  | 21 ++++++++++++---------
+ 3 files changed, 26 insertions(+), 17 deletions(-)
+
+commit 4cb98d5b56896c07a67554940ef92077aeb3b606
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 04:20:05 2016 -0500
+
+    student specs
+
+ student.ml  | 100 +++++++++++++++++++++++++++++++++++++++++++++++++-----------
+ student.mli |   4 +--
+ 2 files changed, 84 insertions(+), 20 deletions(-)
+
+commit c1131cf476f56af55c371a0678377d80faab7d60
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 03:57:09 2016 -0500
+
+    fixed failures
+
+ gameMap.ml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit d37be16a7aac5acc8833ce288cc8d03ea5013c67
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 03:45:29 2016 -0500
+
+    made saving more clear
+
+ _build/_digests              |  52 -------
+ _build/_log                  |  75 ----------
+ _build/command.cmi           | Bin 1463 -> 0 bytes
+ _build/command.cmo           | Bin 9571 -> 0 bytes
+ _build/command.ml            |  73 ----------
+ _build/command.ml.depends    |   1 -
+ _build/command.mli           |  62 ---------
+ _build/command.mli.depends   |   1 -
+ _build/gameMap.cmi           | Bin 2759 -> 0 bytes
+ _build/gameMap.cmo           | Bin 60846 -> 0 bytes
+ _build/gameMap.ml            | 315 ------------------------------------------
+ _build/gameMap.ml.depends    |   1 -
+ _build/gameMap.mli           |  77 -----------
+ _build/gameMap.mli.depends   |   1 -
+ _build/gameState.cmi         | Bin 1695 -> 0 bytes
+ _build/gameState.cmo         | Bin 30878 -> 0 bytes
+ _build/gameState.ml          | 175 -----------------------
+ _build/gameState.ml.depends  |   1 -
+ _build/gameState.mli         |  67 ---------
+ _build/gameState.mli.depends |   1 -
+ _build/gui.cmi               | Bin 1622 -> 0 bytes
+ _build/gui.cmo               | Bin 27934 -> 0 bytes
+ _build/gui.ml                | 185 -------------------------
+ _build/gui.ml.depends        |   1 -
+ _build/gui.mli               |  42 ------
+ _build/gui.mli.depends       |   1 -
+ _build/main.byte             | Bin 4046632 -> 0 bytes
+ _build/main.cmi              | Bin 1126 -> 0 bytes
+ _build/main.cmo              | Bin 12709 -> 0 bytes
+ _build/main.ml               |  72 ----------
+ _build/main.ml.depends       |   1 -
+ _build/memory.cmi            | Bin 811 -> 0 bytes
+ _build/memory.cmo            | Bin 3324 -> 0 bytes
+ _build/memory.ml             |  13 --
+ _build/memory.ml.depends     |   1 -
+ _build/memory.mli            |  10 --
+ _build/memory.mli.depends    |   1 -
+ _build/ocamlc.where          |   1 -
+ _build/runner.cmi            | Bin 1255 -> 0 bytes
+ _build/runner.cmo            | Bin 32797 -> 0 bytes
+ _build/runner.ml             | 157 ---------------------
+ _build/runner.ml.depends     |   1 -
+ _build/runner.mli            |  41 ------
+ _build/runner.mli.depends    |   1 -
+ _build/student.cmi           | Bin 4600 -> 0 bytes
+ _build/student.cmo           | Bin 67798 -> 0 bytes
+ _build/student.ml            | 320 -------------------------------------------
+ _build/student.ml.depends    |   1 -
+ _build/student.mli           | 155 ---------------------
+ _build/student.mli.depends   |   1 -
+ _build/zombie.cmi            | Bin 1807 -> 0 bytes
+ _build/zombie.cmo            | Bin 23072 -> 0 bytes
+ _build/zombie.ml             | 124 -----------------
+ _build/zombie.ml.depends     |   1 -
+ _build/zombie.mli            |  47 -------
+ _build/zombie.mli.depends    |   1 -
+ main.byte                    |   1 -
+ 57 files changed, 2081 deletions(-)
+
+commit 2451185cf26e0388c3f70441fc81b4858f24af74
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 03:45:21 2016 -0500
+
+    made saving more clear
+
+ _build/_digests              |  52 +++++++
+ _build/_log                  |  75 ++++++++++
+ _build/command.cmi           | Bin 0 -> 1463 bytes
+ _build/command.cmo           | Bin 0 -> 9571 bytes
+ _build/command.ml            |  73 ++++++++++
+ _build/command.ml.depends    |   1 +
+ _build/command.mli           |  62 +++++++++
+ _build/command.mli.depends   |   1 +
+ _build/gameMap.cmi           | Bin 0 -> 2759 bytes
+ _build/gameMap.cmo           | Bin 0 -> 60846 bytes
+ _build/gameMap.ml            | 315 ++++++++++++++++++++++++++++++++++++++++++
+ _build/gameMap.ml.depends    |   1 +
+ _build/gameMap.mli           |  77 +++++++++++
+ _build/gameMap.mli.depends   |   1 +
+ _build/gameState.cmi         | Bin 0 -> 1695 bytes
+ _build/gameState.cmo         | Bin 0 -> 30878 bytes
+ _build/gameState.ml          | 175 +++++++++++++++++++++++
+ _build/gameState.ml.depends  |   1 +
+ _build/gameState.mli         |  67 +++++++++
+ _build/gameState.mli.depends |   1 +
+ _build/gui.cmi               | Bin 0 -> 1622 bytes
+ _build/gui.cmo               | Bin 0 -> 27934 bytes
+ _build/gui.ml                | 185 +++++++++++++++++++++++++
+ _build/gui.ml.depends        |   1 +
+ _build/gui.mli               |  42 ++++++
+ _build/gui.mli.depends       |   1 +
+ _build/main.byte             | Bin 0 -> 4046632 bytes
+ _build/main.cmi              | Bin 0 -> 1126 bytes
+ _build/main.cmo              | Bin 0 -> 12709 bytes
+ _build/main.ml               |  72 ++++++++++
+ _build/main.ml.depends       |   1 +
+ _build/memory.cmi            | Bin 0 -> 811 bytes
+ _build/memory.cmo            | Bin 0 -> 3324 bytes
+ _build/memory.ml             |  13 ++
+ _build/memory.ml.depends     |   1 +
+ _build/memory.mli            |  10 ++
+ _build/memory.mli.depends    |   1 +
+ _build/ocamlc.where          |   1 +
+ _build/runner.cmi            | Bin 0 -> 1255 bytes
+ _build/runner.cmo            | Bin 0 -> 32797 bytes
+ _build/runner.ml             | 157 +++++++++++++++++++++
+ _build/runner.ml.depends     |   1 +
+ _build/runner.mli            |  41 ++++++
+ _build/runner.mli.depends    |   1 +
+ _build/student.cmi           | Bin 0 -> 4600 bytes
+ _build/student.cmo           | Bin 0 -> 67798 bytes
+ _build/student.ml            | 320 +++++++++++++++++++++++++++++++++++++++++++
+ _build/student.ml.depends    |   1 +
+ _build/student.mli           | 155 +++++++++++++++++++++
+ _build/student.mli.depends   |   1 +
+ _build/zombie.cmi            | Bin 0 -> 1807 bytes
+ _build/zombie.cmo            | Bin 0 -> 23072 bytes
+ _build/zombie.ml             | 124 +++++++++++++++++
+ _build/zombie.ml.depends     |   1 +
+ _build/zombie.mli            |  47 +++++++
+ _build/zombie.mli.depends    |   1 +
+ main.byte                    |   1 +
+ runner.ml                    |   4 +-
+ 58 files changed, 2084 insertions(+), 1 deletion(-)
+
+commit 0cb60b67839c42f2dbdc9c6cfd6c119c92246112
+Merge: d1a6d5f 325e616
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 03:37:22 2016 -0500
+
+    merging
+
+commit d1a6d5fe8d0d283993ca750fa4d504093a27c766
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 03:35:00 2016 -0500
+
+    fixed pickup
+
+ command.ml      |  4 ++--
+ command.mli     |  6 +++---
+ gameMap.ml      | 14 ++++++--------
+ gameMap.mli     |  8 ++++----
+ gameState.ml    |  8 ++++----
+ runner.ml       |  9 ++-------
+ test_command.ml |  2 +-
+ 7 files changed, 22 insertions(+), 29 deletions(-)
+
+commit 325e616dd674bfe184fe516d2464836eb8ab3a16
+Merge: 6ae4a8e 750d946
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Dec 5 03:25:53 2016 -0500
+
+    Merge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit 6ae4a8e56f901b37ed2536ca2b397ebb9cc266a5
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Dec 5 03:25:33 2016 -0500
+
+    Changed adding item format.
+
+ .ocamlinit | 25 +++++++++++++++++++++++++
+ gameMap.ml |  5 +++--
+ 2 files changed, 28 insertions(+), 2 deletions(-)
+
+commit 750d9462c1119e5f1f6fba22ab0b19a0b5cb2e9b
+Merge: 228aea0 a58d474
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 03:21:38 2016 -0500
+
+    Merge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit 228aea08c62e6b3f99c09b28087529ffb2464e96
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 03:21:14 2016 -0500
+
+    tests all good
+
+ student.ml      |  10 +--
+ test.ml         |   2 +-
+ test_student.ml | 216 ++++++++++++++++++++++++++++++++++++++++++++++++++++----
+ 3 files changed, 209 insertions(+), 19 deletions(-)
+
+commit a58d474afd51a8182f6bc6234290ee807c15ad1b
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 02:51:44 2016 -0500
+
+    the zombie gets hit, but one zombie just slaughtered my whole team
+
+ gameState.ml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 55f614008c8cabb89aa65d42baa36b491ac013d9
+Merge: b964795 83eac87
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 02:45:51 2016 -0500
+
+    Merge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit b964795c330fb0127260e5058745f0d2665bba29
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 02:45:29 2016 -0500
+
+    display zombie health
+
+ gui.ml     | 33 +++++++++++++++++++++++----------
+ zombie.mli |  3 +++
+ 2 files changed, 26 insertions(+), 10 deletions(-)
+
+commit 83eac877d66286399ddd58b3e80a35323280af45
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Dec 5 02:25:11 2016 -0500
+
+    Changed all the rev_maps to the helper function
+
+ student.ml | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+commit a09dad08036cf0790d432501f7e3aeeeac0055f0
+Author: la334 <la334@cornell.edu>
+Date:   Mon Dec 5 02:19:20 2016 -0500
+
+    can run
+
+ gameState.ml    |  6 ++----
+ test_student.ml | 33 +++++++++++++++++++++++++++++++++
+ 2 files changed, 35 insertions(+), 4 deletions(-)
+
+commit 69c0aa8dc49b0a4950660d1eef67f07e5ce07251
+Author: Erick P <ubuntu@csvm>
+Date:   Mon Dec 5 02:06:26 2016 -0500
+
+    gameMap and student edited for sake of gui, and depl rates fixed
+
+ gameMap.ml   | 23 +++++++++++++++++++++++
+ gameMap.mli  |  4 ++++
+ gameState.ml |  2 +-
+ student.ml   | 45 +++++++++++++++++++++++++--------------------
+ 4 files changed, 53 insertions(+), 21 deletions(-)
+
+commit a34c165c66634b9d8853c04846aba7fd05e2f6cd
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 01:56:37 2016 -0500
+
+    got rid of old my_json.json
+
+ README.txt   | 3 +--
+ my_json.json | 1 -
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+commit 2972c0ef8c9cdc8ed8829536586654bb86f3d5d5
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 01:45:01 2016 -0500
+
+    took out print statements
+
+ gameState.ml | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+commit 31e77786d92f8fc917631a0792dbb9a30bb95d0e
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 01:34:42 2016 -0500
+
+    and again
+
+ gameState.ml  | 4 ++++
+ gameState.mli | 5 +++--
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+commit 2d5030e2452fb5741b5e60ffbf901e6af52d1cc4
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 01:33:17 2016 -0500
+
+    fixed error
+
+ gameState.ml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 201dff64cf79ccb0e0c71668f099943f8051904a
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 01:31:52 2016 -0500
+
+    added the function, need to add its specs
+
+ gameState.ml    | 10 +++++++++-
+ gameState.mli   |  5 +++++
+ runner.ml       | 48 +++++++++++++++++++++++++++---------------------
+ test.ml         |  2 +-
+ test_gameMap.ml | 15 ++++-----------
+ test_zombie.ml  | 17 +++++++++++++++++
+ 6 files changed, 63 insertions(+), 34 deletions(-)
+
+commit 3742eeafa92b2950a6631e6b433e4c44a270b7a8
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 01:27:06 2016 -0500
+
+    zombie list printing
+
+ gui.ml       | 17 +++++++++++++++--
+ gui.mli      |  3 ++-
+ guitester.ml |  2 +-
+ 3 files changed, 18 insertions(+), 4 deletions(-)
+
+commit 26110ec4d100a8421e0c5d11c401bed65149258e
+Merge: 791d6c2 901771d
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 00:34:33 2016 -0500
+
+    erge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit 791d6c2008564b904a56215a9dbe5d7d9f68976f
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 00:33:54 2016 -0500
+
+    shows empty
+
+ _build/_digests              |  56 --------
+ _build/_log                  |  72 ----------
+ _build/command.cmi           | Bin 1478 -> 0 bytes
+ _build/command.cmo           | Bin 9603 -> 0 bytes
+ _build/command.ml            |  73 ----------
+ _build/command.ml.depends    |   1 -
+ _build/command.mli           |  62 ---------
+ _build/command.mli.depends   |   1 -
+ _build/gameMap.cmi           | Bin 2571 -> 0 bytes
+ _build/gameMap.cmo           | Bin 56990 -> 0 bytes
+ _build/gameMap.ml            | 293 ----------------------------------------
+ _build/gameMap.ml.depends    |   1 -
+ _build/gameMap.mli           |  73 ----------
+ _build/gameMap.mli.depends   |   1 -
+ _build/gameState.cmi         | Bin 1584 -> 0 bytes
+ _build/gameState.cmo         | Bin 31233 -> 0 bytes
+ _build/gameState.ml          | 172 -----------------------
+ _build/gameState.ml.depends  |   1 -
+ _build/gameState.mli         |  61 ---------
+ _build/gameState.mli.depends |   1 -
+ _build/gui.cmi               | Bin 1556 -> 0 bytes
+ _build/gui.cmo               | Bin 23805 -> 0 bytes
+ _build/gui.ml                | 159 ----------------------
+ _build/gui.ml.depends        |   1 -
+ _build/gui.mli               |  41 ------
+ _build/gui.mli.depends       |   1 -
+ _build/guitester.byte        | Bin 3764530 -> 0 bytes
+ _build/guitester.cmi         | Bin 1418 -> 0 bytes
+ _build/guitester.cmo         | Bin 5380 -> 0 bytes
+ _build/guitester.ml          |  54 --------
+ _build/guitester.ml.depends  |   1 -
+ _build/main.byte             | Bin 4040086 -> 0 bytes
+ _build/main.cmi              | Bin 1126 -> 0 bytes
+ _build/main.cmo              | Bin 12725 -> 0 bytes
+ _build/main.ml               |  72 ----------
+ _build/main.ml.depends       |   1 -
+ _build/memory.cmi            | Bin 811 -> 0 bytes
+ _build/memory.cmo            | Bin 3340 -> 0 bytes
+ _build/memory.ml             |  13 --
+ _build/memory.ml.depends     |   1 -
+ _build/memory.mli            |  10 --
+ _build/memory.mli.depends    |   1 -
+ _build/ocamlc.where          |   1 -
+ _build/runner.cmi            | Bin 1255 -> 0 bytes
+ _build/runner.cmo            | Bin 34072 -> 0 bytes
+ _build/runner.ml             | 154 ---------------------
+ _build/runner.ml.depends     |   1 -
+ _build/runner.mli            |  41 ------
+ _build/runner.mli.depends    |   1 -
+ _build/student.cmi           | Bin 4600 -> 0 bytes
+ _build/student.cmo           | Bin 67617 -> 0 bytes
+ _build/student.ml            | 315 -------------------------------------------
+ _build/student.ml.depends    |   1 -
+ _build/student.mli           | 155 ---------------------
+ _build/student.mli.depends   |   1 -
+ _build/zombie.cmi            | Bin 1721 -> 0 bytes
+ _build/zombie.cmo            | Bin 23080 -> 0 bytes
+ _build/zombie.ml             | 124 -----------------
+ _build/zombie.ml.depends     |   1 -
+ _build/zombie.mli            |  44 ------
+ _build/zombie.mli.depends    |   1 -
+ guitester.byte               |   1 -
+ main.byte                    |   1 -
+ 63 files changed, 2065 deletions(-)
+
+commit 901771d1e6a9109de1f7328449840bea9f24d89b
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 00:29:35 2016 -0500
+
+    i lied there was one more print
+
+ runner.ml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 2ebfd0081971c35c98842c4be3f15ad1ae49ee0d
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 00:29:04 2016 -0500
+
+    is_empty signal
+
+ _build/_digests              |  56 ++++++++
+ _build/_log                  |  72 ++++++++++
+ _build/command.cmi           | Bin 0 -> 1478 bytes
+ _build/command.cmo           | Bin 0 -> 9603 bytes
+ _build/command.ml            |  73 ++++++++++
+ _build/command.ml.depends    |   1 +
+ _build/command.mli           |  62 +++++++++
+ _build/command.mli.depends   |   1 +
+ _build/gameMap.cmi           | Bin 0 -> 2571 bytes
+ _build/gameMap.cmo           | Bin 0 -> 56990 bytes
+ _build/gameMap.ml            | 293 ++++++++++++++++++++++++++++++++++++++++
+ _build/gameMap.ml.depends    |   1 +
+ _build/gameMap.mli           |  73 ++++++++++
+ _build/gameMap.mli.depends   |   1 +
+ _build/gameState.cmi         | Bin 0 -> 1584 bytes
+ _build/gameState.cmo         | Bin 0 -> 31233 bytes
+ _build/gameState.ml          | 172 +++++++++++++++++++++++
+ _build/gameState.ml.depends  |   1 +
+ _build/gameState.mli         |  61 +++++++++
+ _build/gameState.mli.depends |   1 +
+ _build/gui.cmi               | Bin 0 -> 1556 bytes
+ _build/gui.cmo               | Bin 0 -> 23805 bytes
+ _build/gui.ml                | 159 ++++++++++++++++++++++
+ _build/gui.ml.depends        |   1 +
+ _build/gui.mli               |  41 ++++++
+ _build/gui.mli.depends       |   1 +
+ _build/guitester.byte        | Bin 0 -> 3764530 bytes
+ _build/guitester.cmi         | Bin 0 -> 1418 bytes
+ _build/guitester.cmo         | Bin 0 -> 5380 bytes
+ _build/guitester.ml          |  54 ++++++++
+ _build/guitester.ml.depends  |   1 +
+ _build/main.byte             | Bin 0 -> 4040086 bytes
+ _build/main.cmi              | Bin 0 -> 1126 bytes
+ _build/main.cmo              | Bin 0 -> 12725 bytes
+ _build/main.ml               |  72 ++++++++++
+ _build/main.ml.depends       |   1 +
+ _build/memory.cmi            | Bin 0 -> 811 bytes
+ _build/memory.cmo            | Bin 0 -> 3340 bytes
+ _build/memory.ml             |  13 ++
+ _build/memory.ml.depends     |   1 +
+ _build/memory.mli            |  10 ++
+ _build/memory.mli.depends    |   1 +
+ _build/ocamlc.where          |   1 +
+ _build/runner.cmi            | Bin 0 -> 1255 bytes
+ _build/runner.cmo            | Bin 0 -> 34072 bytes
+ _build/runner.ml             | 154 +++++++++++++++++++++
+ _build/runner.ml.depends     |   1 +
+ _build/runner.mli            |  41 ++++++
+ _build/runner.mli.depends    |   1 +
+ _build/student.cmi           | Bin 0 -> 4600 bytes
+ _build/student.cmo           | Bin 0 -> 67617 bytes
+ _build/student.ml            | 315 +++++++++++++++++++++++++++++++++++++++++++
+ _build/student.ml.depends    |   1 +
+ _build/student.mli           | 155 +++++++++++++++++++++
+ _build/student.mli.depends   |   1 +
+ _build/zombie.cmi            | Bin 0 -> 1721 bytes
+ _build/zombie.cmo            | Bin 0 -> 23080 bytes
+ _build/zombie.ml             | 124 +++++++++++++++++
+ _build/zombie.ml.depends     |   1 +
+ _build/zombie.mli            |  44 ++++++
+ _build/zombie.mli.depends    |   1 +
+ gui.ml                       |  55 ++++----
+ gui.mli                      |   2 +-
+ guitester.byte               |   1 +
+ guitester.ml                 |   7 +-
+ main.byte                    |   1 +
+ 66 files changed, 2101 insertions(+), 28 deletions(-)
+
+commit e1a9d06dc0cff6796cbf77b23180f7ea207e5319
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 00:28:39 2016 -0500
+
+    took out prints
+
+ gameState.ml | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+commit ab0525493e3036f03dc65bc5b402b2ae5f22df43
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 00:27:03 2016 -0500
+
+    fightin for real
+
+ gameState.ml | 19 +++++++------------
+ 1 file changed, 7 insertions(+), 12 deletions(-)
+
+commit 20c3a43f8e95d539ffa2fc947244cd38e997ec1c
+Author: Ubuntu <ubuntu@csvm>
+Date:   Mon Dec 5 00:00:32 2016 -0500
+
+    COMBAT MODE
+
+ gameState.ml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 02795b2629f42cfc0672449dc89c7e5ba4213f47
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 23:45:52 2016 -0500
+
+    zombie attacks?
+
+ gameState.ml | 2 +-
+ runner.ml    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit b3c3fce16df1c16841a65c3f854a3826eddf982c
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 23:26:38 2016 -0500
+
+    there
+
+ gameState.ml    |  1 +
+ test_gameMap.ml | 34 +++++++++++++---------------------
+ 2 files changed, 14 insertions(+), 21 deletions(-)
+
+commit e91d1e01aafd6fd79b4776ada19870f06aaace28
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 23:16:55 2016 -0500
+
+    Make play works.
+
+ gameState.ml | 4 ++--
+ student.ml   | 4 ++--
+ student.mli  | 3 ++-
+ 3 files changed, 6 insertions(+), 5 deletions(-)
+
+commit 1af5e6ec3ec83b6e0db5993b4b0747917c52e801
+Merge: 7e4b9f8 654f1f0
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 23:03:47 2016 -0500
+
+    Merge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit 7e4b9f867bb8d299d3a3864c728b71dc92eec98a
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 23:02:12 2016 -0500
+
+    upd_stud takes diff
+
+ gameState.ml | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit 654f1f0977088c32ee5300c1fb7d15a83f987a94
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 22:58:26 2016 -0500
+
+    Added difficulty to make team
+
+ student.ml | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+commit 2e1d996944dcb5ef2829b12e48656709c2c7b8ff
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 22:50:11 2016 -0500
+
+    here ya go
+
+ gameState.ml    |  2 +-
+ test_gameMap.ml | 49 +++++++++++++++++++++++++++++++++++++++++++++++--
+ zombie.ml       |  2 +-
+ 3 files changed, 49 insertions(+), 4 deletions(-)
+
+commit 35144ab62beed2dfc2f96dc0e46d94c5f844e3d5
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 22:32:53 2016 -0500
+
+    Changes to attributes and depletion rates in student.
+
+ student.ml  | 36 +++++++++++++++++++++++-------------
+ student.mli | 10 +++++-----
+ 2 files changed, 28 insertions(+), 18 deletions(-)
+
+commit f9525f5bcf97fc5f09bbad29b6447fdb6db91318
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 22:22:37 2016 -0500
+
+    final formatting changes
+
+ zombie.ml  | 40 +++++++++++++++++++++++++---------------
+ zombie.mli |  4 ++--
+ 2 files changed, 27 insertions(+), 17 deletions(-)
+
+commit 1e3c8f520fa8b1f8a44ffc28356de4f8735fb399
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 22:15:54 2016 -0500
+
+    some more formatting
+
+ gameMap.ml  |  3 +++
+ gameMap.mli |  1 +
+ zombie.ml   | 27 +++++++++++----------------
+ zombie.mli  |  2 +-
+ 4 files changed, 16 insertions(+), 17 deletions(-)
+
+commit f5a59e37aab256d221fe7ab3a88d66310304ad35
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 22:07:54 2016 -0500
+
+    fixed json s in gameMap
+
+ gameMap.ml | 36 +++++++++++++++++++-----------------
+ 1 file changed, 19 insertions(+), 17 deletions(-)
+
+commit c49e70f1b8566aa884a5ce9f0bc3653b57cad4b0
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 21:54:37 2016 -0500
+
+    gameState formatting good to go
+
+ gameState.ml | 51 +++++++++++++++++++++++++++------------------------
+ 1 file changed, 27 insertions(+), 24 deletions(-)
+
+commit 4388fd0f0acfd29a6d8e39695549b292476b01ca
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 21:41:30 2016 -0500
+
+    i lied it's good now
+
+ _build/_digests              |  46 -------
+ _build/_log                  |  82 ------------
+ _build/command.cmi           | Bin 1478 -> 0 bytes
+ _build/command.cmo           | Bin 9587 -> 0 bytes
+ _build/command.ml            |  73 -----------
+ _build/command.ml.depends    |   1 -
+ _build/command.mli           |  62 ---------
+ _build/command.mli.depends   |   1 -
+ _build/gameMap.cmi           | Bin 2571 -> 0 bytes
+ _build/gameMap.cmo           | Bin 57122 -> 0 bytes
+ _build/gameMap.ml            | 288 ----------------------------------------
+ _build/gameMap.ml.depends    |   1 -
+ _build/gameMap.mli           |  72 ----------
+ _build/gameMap.mli.depends   |   1 -
+ _build/gameState.cmi         | Bin 1584 -> 0 bytes
+ _build/gameState.ml          | 169 ------------------------
+ _build/gameState.ml.depends  |   1 -
+ _build/gameState.mli         |  61 ---------
+ _build/gameState.mli.depends |   1 -
+ _build/gui.cmi               | Bin 1489 -> 0 bytes
+ _build/gui.ml                | 154 ----------------------
+ _build/gui.ml.depends        |   1 -
+ _build/gui.mli               |  41 ------
+ _build/gui.mli.depends       |   1 -
+ _build/main.cmi              | Bin 1126 -> 0 bytes
+ _build/main.cmo              | Bin 12709 -> 0 bytes
+ _build/main.ml               |  72 ----------
+ _build/main.ml.depends       |   1 -
+ _build/memory.cmi            | Bin 811 -> 0 bytes
+ _build/memory.ml             |  13 --
+ _build/memory.ml.depends     |   1 -
+ _build/memory.mli            |  10 --
+ _build/memory.mli.depends    |   1 -
+ _build/ocamlc.where          |   1 -
+ _build/runner.cmi            | Bin 1255 -> 0 bytes
+ _build/runner.cmo            | Bin 34056 -> 0 bytes
+ _build/runner.ml             | 154 ----------------------
+ _build/runner.ml.depends     |   1 -
+ _build/runner.mli            |  41 ------
+ _build/runner.mli.depends    |   1 -
+ _build/student.cmi           | Bin 4539 -> 0 bytes
+ _build/student.ml            | 305 -------------------------------------------
+ _build/student.ml.depends    |   1 -
+ _build/student.mli           | 154 ----------------------
+ _build/student.mli.depends   |   1 -
+ _build/zombie.cmi            | Bin 1716 -> 0 bytes
+ _build/zombie.ml             | 119 -----------------
+ _build/zombie.ml.depends     |   1 -
+ _build/zombie.mli            |  44 -------
+ _build/zombie.mli.depends    |   1 -
+ 50 files changed, 1978 deletions(-)
+
+commit f33246ee86054b2726612709f279adbdaa31e3fa
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 21:41:22 2016 -0500
+
+    i lied it's good now
+
+ _build/_digests              |  46 +++++++
+ _build/_log                  |  82 ++++++++++++
+ _build/command.cmi           | Bin 0 -> 1478 bytes
+ _build/command.cmo           | Bin 0 -> 9587 bytes
+ _build/command.ml            |  73 +++++++++++
+ _build/command.ml.depends    |   1 +
+ _build/command.mli           |  62 +++++++++
+ _build/command.mli.depends   |   1 +
+ _build/gameMap.cmi           | Bin 0 -> 2571 bytes
+ _build/gameMap.cmo           | Bin 0 -> 57122 bytes
+ _build/gameMap.ml            | 288 ++++++++++++++++++++++++++++++++++++++++
+ _build/gameMap.ml.depends    |   1 +
+ _build/gameMap.mli           |  72 ++++++++++
+ _build/gameMap.mli.depends   |   1 +
+ _build/gameState.cmi         | Bin 0 -> 1584 bytes
+ _build/gameState.ml          | 169 ++++++++++++++++++++++++
+ _build/gameState.ml.depends  |   1 +
+ _build/gameState.mli         |  61 +++++++++
+ _build/gameState.mli.depends |   1 +
+ _build/gui.cmi               | Bin 0 -> 1489 bytes
+ _build/gui.ml                | 154 ++++++++++++++++++++++
+ _build/gui.ml.depends        |   1 +
+ _build/gui.mli               |  41 ++++++
+ _build/gui.mli.depends       |   1 +
+ _build/main.cmi              | Bin 0 -> 1126 bytes
+ _build/main.cmo              | Bin 0 -> 12709 bytes
+ _build/main.ml               |  72 ++++++++++
+ _build/main.ml.depends       |   1 +
+ _build/memory.cmi            | Bin 0 -> 811 bytes
+ _build/memory.ml             |  13 ++
+ _build/memory.ml.depends     |   1 +
+ _build/memory.mli            |  10 ++
+ _build/memory.mli.depends    |   1 +
+ _build/ocamlc.where          |   1 +
+ _build/runner.cmi            | Bin 0 -> 1255 bytes
+ _build/runner.cmo            | Bin 0 -> 34056 bytes
+ _build/runner.ml             | 154 ++++++++++++++++++++++
+ _build/runner.ml.depends     |   1 +
+ _build/runner.mli            |  41 ++++++
+ _build/runner.mli.depends    |   1 +
+ _build/student.cmi           | Bin 0 -> 4539 bytes
+ _build/student.ml            | 305 +++++++++++++++++++++++++++++++++++++++++++
+ _build/student.ml.depends    |   1 +
+ _build/student.mli           | 154 ++++++++++++++++++++++
+ _build/student.mli.depends   |   1 +
+ _build/zombie.cmi            | Bin 0 -> 1716 bytes
+ _build/zombie.ml             | 119 +++++++++++++++++
+ _build/zombie.ml.depends     |   1 +
+ _build/zombie.mli            |  44 +++++++
+ _build/zombie.mli.depends    |   1 +
+ runner.ml                    |   6 +-
+ 51 files changed, 1981 insertions(+), 3 deletions(-)
+
+commit 55101cad064a535b7413b4b700fde3134818cdfe
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 21:39:55 2016 -0500
+
+    changed game state to pass in difficulty to update team
+
+ gameState.ml    | 113 ++++++++++-------------------------
+ gameState.mli   |  37 ++++++------
+ memory.ml       |   1 +
+ memory.mli      |   1 +
+ runner.ml       | 182 +++++++++++++++++++++++++++++---------------------------
+ runner.mli      |  22 ++++---
+ test.ml         |   2 +-
+ test_command.ml |  22 +++++++
+ 8 files changed, 183 insertions(+), 197 deletions(-)
+
+commit af226d5334675638fd1c9112f8d00d17aae80969
+Merge: a484208 14720f3
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 20:21:06 2016 -0500
+
+    Merge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit a48420812bd7093a5939e9243368e9380fde0a37
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 20:20:43 2016 -0500
+
+    variable message updater
+
+ gui.ml       | 4 ++--
+ gui.mli      | 2 +-
+ guitester.ml | 5 +++--
+ 3 files changed, 6 insertions(+), 5 deletions(-)
+
+commit 14720f3f5dd27c45ab7ea934bbef7b4c26ce7564
+Merge: 6085c8a b5dfb62
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 19:28:09 2016 -0500
+
+    Merging.Merge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit 6085c8a5ae5f1ec52317f19c1661a9138c499222
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 19:27:56 2016 -0500
+
+    Fixed wrong numbers with wrong name in gui.
+
+ student.ml | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+commit b5dfb622119b85c5ea87bff552785cc02e3b381c
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 19:22:57 2016 -0500
+
+    command is completely done
+
+ README.txt  |  5 +++--
+ command.ml  | 68 ++++++++++++++++++++++++++++++-------------------------------
+ command.mli | 48 ++++++++++++++++++++++++++++++++++++-------
+ 3 files changed, 78 insertions(+), 43 deletions(-)
+
+commit 197bdfc555808beb3fd61fc88ded4790b0c8f767
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 19:21:19 2016 -0500
+
+    remove prints and correct progress bar
+
+ gui.ml       | 28 ++++++++++++++++++++--------
+ guitester.ml |  2 +-
+ 2 files changed, 21 insertions(+), 9 deletions(-)
+
+commit 2edfac226dc8d292874643cad947706a6b13b51b
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 19:13:46 2016 -0500
+
+    Compiles with all name changes and types.
+
+ student.ml  |   9 +-
+ student2.ml | 300 ------------------------------------------------------------
+ 2 files changed, 5 insertions(+), 304 deletions(-)
+
+commit 770223116f316800cb16fea22ded0b5e53b13203
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 18:58:01 2016 -0500
+
+    Added student file name change update.
+
+ student.ml | 221 +++++++++++++++++++++++--------------------------------------
+ 1 file changed, 82 insertions(+), 139 deletions(-)
+
+commit b0b8f406a2f1ee78044b23cb117b8b747f42b50d
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 18:56:39 2016 -0500
+
+    almost there
+
+ README.txt   | 69 +++++++++++++++++++++++++++++++++++++++++++++
+ gameState.ml | 50 ++++++++++++++++-----------------
+ main.ml      |  3 --
+ runner.ml    | 91 +++++++++++++++++++++++++++++-------------------------------
+ 4 files changed, 138 insertions(+), 75 deletions(-)
+
+commit 19e13d6d487d72f01680a7c121ac1622a95055ae
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 18:53:23 2016 -0500
+
+    Changed names in ml files.
+
+ student.mli |  4 +++-
+ student2.ml | 55 ++++++++++++++++++++++++++++---------------------------
+ 2 files changed, 31 insertions(+), 28 deletions(-)
+
+commit 84aaf95c13c0491b804927511786fd8a047033be
+Merge: e12f78f 616324d
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 18:20:55 2016 -0500
+
+    Merging. Fudge this merge stuff.Merge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit e12f78ffb6bbbe09642d5f116c59016604f66e9d
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 18:20:38 2016 -0500
+
+    Pushing changed mli for student with name and type changes.
+
+ student.mli     | 76 +++++++++++++++++++++++---------------------------
+ student2.ml     | 86 +++++++++++++++++++++++++++++++--------------------------
+ test_gameMap.ml |  2 +-
+ 3 files changed, 83 insertions(+), 81 deletions(-)
+
+commit 616324dd72008f3f98da5d1120c84536549733a4
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 18:18:38 2016 -0500
+
+    no max_prog
+
+ gui.ml       | 2 +-
+ guitester.ml | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+commit cbf5667a260315684e043cdf6539caf271968baf
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 18:16:38 2016 -0500
+
+    awake-sleeping-charging
+
+ gui.ml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 43867ad133d32e97f44d27937a335db47102adf5
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 18:09:19 2016 -0500
+
+    functional standalone gui
+
+ gui.ml       | 94 +++++++++++++++++++++++++++++++++++++++++++++++-------------
+ guitester.ml | 11 ++++++-
+ 2 files changed, 84 insertions(+), 21 deletions(-)
+
+commit a4a28677c423323bbabceb30b9a062e97554bef7
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 16:53:39 2016 -0500
+
+    Changing specs of student.mli
+
+ student.mli | 76 ++++++++++++++++++++++++++++++-------------------------------
+ 1 file changed, 37 insertions(+), 39 deletions(-)
+
+commit 4b0b7af973beb50946e5864e9ec8805f611cf5e2
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 16:13:16 2016 -0500
+
+    working?
+
+ command.ml   | 9 ++++++---
+ command.mli  | 5 +++--
+ gameState.ml | 7 +++++--
+ runner.ml    | 3 ++-
+ 4 files changed, 16 insertions(+), 8 deletions(-)
+
+commit 2575910de53b7f82024af874aed2843a5831e8a3
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 14:28:07 2016 -0500
+
+    progress no longer part of curr_state
+
+ gameState.ml  | 23 ++++++-----------------
+ gameState.mli |  2 +-
+ runner.ml     |  1 +
+ 3 files changed, 8 insertions(+), 18 deletions(-)
+
+commit 963b43845c14b57ccc9272955b54e74927721a56
+Merge: f9a6078 24fecf4
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 14:16:52 2016 -0500
+
+    Merge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit f9a60780989eab60e52d110e2d833349c274c330
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 14:16:11 2016 -0500
+
+    display inventory function
+
+ gui.ml       | 74 ++++++++++++++++++++++++++++++++++--------------------------
+ gui.mli      | 23 ++++++++-----------
+ guitester.ml |  6 ++---
+ 3 files changed, 54 insertions(+), 49 deletions(-)
+
+commit 24fecf4f987b988189fb4058b8718748fed6a16a
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 14:15:11 2016 -0500
+
+    changed party to inventory
+
+ command.ml   | 8 ++++----
+ command.mli  | 4 ++--
+ gameState.ml | 2 +-
+ runner.ml    | 4 ++--
+ 4 files changed, 9 insertions(+), 9 deletions(-)
+
+commit 6c1d605158071666096192984fad3aefbba84f74
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 14:02:08 2016 -0500
+
+    taking fixed
+
+ student.ml | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+commit c9b094d7ba0b640a7a4e1e6796183bbefebd1fcd
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 13:50:04 2016 -0500
+
+    take isn't working
+
+ student.ml | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+commit b1bbbce31cf9daa1c6fc7e36ae1fc3fd015d4de8
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 13:27:40 2016 -0500
+
+    have to fix taking items from teaminv
+
+ gameState.ml | 5 +++++
+ runner.ml    | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+commit dd27744bd2876f9bd3cbe7c4e4e7581c55449909
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 05:35:27 2016 -0500
+
+    fixed the pickup thing
+
+ gameState.ml | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit d40adb168f4a4924bce47422bb80fffe2aa70891
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 05:24:48 2016 -0500
+
+    something with pickup is wrong
+
+ gameState.ml |  4 ++--
+ runner.ml    | 13 +++++++++----
+ 2 files changed, 11 insertions(+), 6 deletions(-)
+
+commit 0559fdbe9c56ef63111360801a33289f9aea87f4
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 04:50:18 2016 -0500
+
+    file saving takes in a name now
+
+ command.ml  | 8 ++++----
+ command.mli | 6 +++---
+ memory.ml   | 4 ++--
+ memory.mli  | 2 +-
+ runner.ml   | 4 ++--
+ 5 files changed, 12 insertions(+), 12 deletions(-)
+
+commit f3b7e345029222a366bd7e620dc459efce25176b
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 04:47:00 2016 -0500
+
+    Json save file.
+
+ my_json.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 49f677a81889ce2cd349831708f2119b2d79aeab
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 04:37:47 2016 -0500
+
+    gameMap complete as far as we know.
+
+ gameMap.ml   | 32 ++++++++++++++++++++++++++++++--
+ gameMap.mli  |  7 ++++---
+ gameState.ml |  4 ++--
+ 3 files changed, 36 insertions(+), 7 deletions(-)
+
+commit 56b64f6648cbd43a82eb50a591665e6fba50f232
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 03:54:46 2016 -0500
+
+    fixed a function in zombie
+
+ zombie.ml | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+commit 2aeb6ec91a613bca08ab731f66c68f5531244035
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 03:11:37 2016 -0500
+
+    lol rev_map
+
+ gameState.ml | 1 +
+ student.ml   | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+commit ec7ba9ea93991bcc0a1ea31711e1f027034d9190
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 02:54:08 2016 -0500
+
+    moving isn't working what
+
+ main.ml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 6ee54862c97bb8414249ae28da97812d891111c3
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 03:06:48 2016 -0500
+
+    no more fatalities
+
+ gui.ml  | 4 ++--
+ gui.mli | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+commit 7af4a743f9c8660501ebdf3be6dc6ddd548895f6
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 03:01:59 2016 -0500
+
+    jsdfibdf
+
+ Makefile     |  7 +++----
+ gui.ml       | 52 +++++++++++++++++++++++++++++++++++++++-------------
+ gui.mli      | 18 ++++++++----------
+ guitester.ml | 26 ++++++++++++++++----------
+ main.ml      |  2 +-
+ runner.ml    | 10 +++++-----
+ 6 files changed, 72 insertions(+), 43 deletions(-)
+
+commit ea98a004118d6f5307c77789b8a9ce7d44b71751
+Merge: d1335e1 b787cfd
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 02:38:34 2016 -0500
+
+    Merging.Merge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit d1335e113e93da839080643ecad25aa77958b235
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 02:38:16 2016 -0500
+
+    Going to start student.ml changes.
+
+ student.mli |  14 +--
+ student2.ml | 291 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 295 insertions(+), 10 deletions(-)
+
+commit b787cfd76ef479127aca16a6eb26190e18cc6b38
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sun Dec 4 02:37:54 2016 -0500
+
+    more changes to runner
+
+ main.ml    | 11 +++++++++--
+ runner.ml  | 42 ++++++++++++++++--------------------------
+ runner.mli | 11 ++++-------
+ 3 files changed, 29 insertions(+), 35 deletions(-)
+
+commit 06f5ae6fd708f379ac2805343660f1a8f4a8a39d
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 02:00:28 2016 -0500
+
+    Make play works. Now we go on to tweaking.
+
+ gameMap.ml |  2 +-
+ zombie.ml  | 14 +++++++-------
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+commit 0e4b040c351239d3d2eb76725b151c0160342b1b
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 01:52:25 2016 -0500
+
+    make play works. Need to fix ind out of bounds error.
+
+ gameMap.ml | 15 +++++++++++----
+ student.ml |  9 +++++----
+ 2 files changed, 16 insertions(+), 8 deletions(-)
+
+commit d2a8c0472000598456eb103258617caceb669882
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 01:38:38 2016 -0500
+
+    Fixing syntax and type errors in gameMap.
+
+ gameMap.ml | 11 +++++------
+ runner.ml  | 11 +++++------
+ 2 files changed, 10 insertions(+), 12 deletions(-)
+
+commit a172d30f78bb764f54f9a0ecd6b252e56a193597
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 01:24:47 2016 -0500
+
+    Fixing syntax and bugs for make play run.
+
+ gameMap.ml   |  3 +++
+ gameMap.mli  |  3 +++
+ gameState.ml | 21 ++++++++++++---------
+ runner.ml    |  2 +-
+ 4 files changed, 19 insertions(+), 10 deletions(-)
+
+commit b5150f6a5202bce8c9e27fe20114044300f64d90
+Author: Erick P <ubuntu@csvm>
+Date:   Sun Dec 4 00:39:51 2016 -0500
+
+    gameMap and other files edited.
+
+ gameMap.ml      | 224 +++++++++++++++++++++++++++++++++++---------------------
+ gameMap.mli     |  23 +++---
+ test.ml         |   2 +-
+ test_command.ml |   5 --
+ test_gameMap.ml |   5 +-
+ 5 files changed, 159 insertions(+), 100 deletions(-)
+
+commit 6080a41fc02e395bbef404e48d24aa6704d1536b
+Merge: 7b85dda 45d6cfa
+Author: la334 <la334@cornell.edu>
+Date:   Sat Dec 3 18:32:37 2016 -0500
+
+    "merging"Merge branch 'master' of https://github.coecis.cornell.edu/la334/zombent
+
+commit 45d6cfaf28ff540179bdc00cb33e87cd40651b9e
+Author: Ubuntu <ubuntu@csvm>
+Date:   Sat Dec 3 22:38:14 2016 -0500
+
+    updating makefile to handle guitester
+
+ Makefile     |  3 ++-
+ gui.ml       |  1 +
+ guitester.ml | 36 +++++++++++++++++++++++++++++++-----
+ 3 files changed, 34 insertions(+), 6 deletions(-)
+
+commit 7b85dda022b94ffb634c388c81baea51e5c7974f
+Author: la334 <la334@cornell.edu>
+Date:   Sat Dec 3 18:32:20 2016 -0500
+
+    almost there
+
+ gameState.ml  |  89 +++++++++++++++++++++++-------------------
+ gameState.mli |  45 ++++++++++++++--------
+ runner.ml     | 122 ++++++++++++++++++++++------------------------------------
+ runner.mli    |  11 +++---
+ student.ml    |   2 +-
+ zombie.ml     |  34 ++++++++++------
+ zombie.mli    |  18 +++++----
+ 7 files changed, 165 insertions(+), 156 deletions(-)
+
+commit efc43380fff9ae2299168c63000d913b95f0201c
+Author: la334 <la334@cornell.edu>
+Date:   Sat Dec 3 15:54:44 2016 -0500
+
+    more items
+
+ gameState.ml | 17 ++++++++++-------
+ runner.ml    |  3 ++-
+ student.ml   | 12 +++++-------
+ student.mli  |  2 +-
+ zombie.ml    | 17 +++++++++++++++--
+ zombie.mli   |  2 +-
+ 6 files changed, 34 insertions(+), 19 deletions(-)
+
+commit d93317229d3533fd7c02d9d2c18b6f2fe7aed0d8
+Author: la334 <la334@cornell.edu>
+Date:   Sat Dec 3 14:47:34 2016 -0500
+
+    accidentally modified something in gamestate
+
+ gameState.ml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 20708acb2bd2b0026e7b0ae5f15caccf0d7d6b65
+Author: la334 <la334@cornell.edu>
+Date:   Sat Dec 3 13:17:36 2016 -0500
+
+    self_inits
+
+ student.ml | 2 +-
+ zombie.ml  | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+commit 60167a8f392d727118e5757ef611819d41bd5793
+Author: Erick P <ubuntu@csvm>
+Date:   Fri Dec 2 22:06:41 2016 -0500
+
+    Randomized item init in gameMap.
+
+ gameMap.ml | 171 +++++++++++++++++++++++++++++++++++--------------------------
+ 1 file changed, 99 insertions(+), 72 deletions(-)
+
+commit f6563af47a6e34207ba52416e4caecdf9c3de846
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 18:55:23 2016 -0500
+
+    okay items are implemented except for in map
+
+ gameState.ml |  12 +++----
+ runner.ml    |  13 ++++----
+ student.ml   | 105 +++++++++++++++++++++++++++++++++--------------------------
+ student.mli  |  12 ++++---
+ zombie.ml    |  29 ++++++++++++-----
+ zombie.mli   |   2 +-
+ 6 files changed, 101 insertions(+), 72 deletions(-)
+
+commit 401fd8fd8e28084bd55d324e8280c0f3fda6a40b
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 15:20:28 2016 -0500
+
+    items
+
+ command.ml   | 16 ++++++------
+ command.mli  |  8 +++---
+ gameState.ml | 29 +++++++++++-----------
+ runner.ml    | 30 ++++++++++++++++-------
+ student.ml   | 80 +++++++++++++++++++++++++++++++-----------------------------
+ student.mli  | 16 ++++++------
+ zombie.ml    | 11 ++++++---
+ zombie.mli   |  5 ++--
+ 8 files changed, 108 insertions(+), 87 deletions(-)
+
+commit fec602fdc21c86775b42bb6cb57aa5a561c3ee40
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 12:26:26 2016 -0500
+
+    we choose names now
+
+ gameState.ml  |  4 ++--
+ gameState.mli |  2 +-
+ main.ml       | 33 ++++++++++++++++++++++++++-------
+ runner.ml     |  8 ++++----
+ runner.mli    |  4 ++--
+ student.ml    |  7 ++-----
+ student.mli   |  2 +-
+ 7 files changed, 38 insertions(+), 22 deletions(-)
+
+commit acddcde8b09088d55a46478798babaf0dbd29bcd
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 11:31:28 2016 -0500
+
+    oh look turns was easy
+
+ command.ml    | 18 ++++++++++++++++++
+ command.mli   |  4 +++-
+ gameState.ml  | 40 +++++++++++++++++++++-------------------
+ gameState.mli |  2 +-
+ runner.ml     |  5 +++--
+ student.ml    |  6 +++++-
+ student.mli   |  2 +-
+ 7 files changed, 52 insertions(+), 25 deletions(-)
+
+commit f2b6d6f29511132f355b677a193d0d25b1274d31
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 09:50:26 2016 -0500
+
+    works with her new types, need to fix depletion and also how items work
+
+ gameState.ml | 14 +++++----
+ student.ml   | 97 +++++++++++++++++++++++++++++++++---------------------------
+ student.mli  | 10 +++++--
+ 3 files changed, 71 insertions(+), 50 deletions(-)
+
+commit 43e2113e345ccb3867602d7a5ea612622bc46062
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 09:06:27 2016 -0500
+
+    forgot to delete the actual ref line
+
+ zombie.ml | 8 --------
+ 1 file changed, 8 deletions(-)
+
+commit 82f8a734c09835c215dfaffe01bc8b4d871c308a
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 09:05:00 2016 -0500
+
+    no more refs
+
+ zombie.ml | 36 +++++++++++++++---------------------
+ 1 file changed, 15 insertions(+), 21 deletions(-)
+
+commit 0c3e5af0c1613ecbb6370af176ad2bad22f6fcb1
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 08:17:59 2016 -0500
+
+    everything but make_zombs has been corrected stylistically
+
+ zombie.ml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 4a34db68ab9d9cabd47ec0abe520123d199a93c8
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 08:00:27 2016 -0500
+
+    progress?
+
+ _build/_digests              |  52 -------
+ _build/_log                  |  89 ------------
+ _build/command.cmi           | Bin 1318 -> 0 bytes
+ _build/command.cmo           | Bin 7949 -> 0 bytes
+ _build/command.ml            |  52 -------
+ _build/command.ml.depends    |   1 -
+ _build/command.mli           |  25 ----
+ _build/command.mli.depends   |   1 -
+ _build/gameMap.cmi           | Bin 2126 -> 0 bytes
+ _build/gameMap.cmo           | Bin 28802 -> 0 bytes
+ _build/gameMap.ml            | 166 ----------------------
+ _build/gameMap.ml.depends    |   1 -
+ _build/gameMap.mli           |  65 ---------
+ _build/gameMap.mli.depends   |   1 -
+ _build/gameState.cmi         | Bin 1584 -> 0 bytes
+ _build/gameState.cmo         | Bin 43107 -> 0 bytes
+ _build/gameState.ml          | 197 --------------------------
+ _build/gameState.ml.depends  |   1 -
+ _build/gameState.mli         |  53 -------
+ _build/gameState.mli.depends |   1 -
+ _build/gui.cmi               | Bin 2998 -> 0 bytes
+ _build/gui.cmo               | Bin 8651 -> 0 bytes
+ _build/gui.ml                |  51 -------
+ _build/gui.ml.depends        |   1 -
+ _build/gui.mli               |  48 -------
+ _build/gui.mli.depends       |   1 -
+ _build/main.byte             | Bin 8102565 -> 0 bytes
+ _build/main.cmi              | Bin 1758 -> 0 bytes
+ _build/main.cmo              | Bin 9029 -> 0 bytes
+ _build/main.ml               |  49 -------
+ _build/main.ml.depends       |   1 -
+ _build/memory.cmi            | Bin 786 -> 0 bytes
+ _build/memory.cmo            | Bin 3103 -> 0 bytes
+ _build/memory.ml             |  12 --
+ _build/memory.ml.depends     |   1 -
+ _build/memory.mli            |   9 --
+ _build/memory.mli.depends    |   1 -
+ _build/ocamlc.where          |   1 -
+ _build/runner.cmi            | Bin 2241 -> 0 bytes
+ _build/runner.cmo            | Bin 30234 -> 0 bytes
+ _build/runner.ml             | 166 ----------------------
+ _build/runner.ml.depends     |   1 -
+ _build/runner.mli            |  39 -----
+ _build/runner.mli.depends    |   1 -
+ _build/student.cmi           | Bin 3411 -> 0 bytes
+ _build/student.cmo           | Bin 58629 -> 0 bytes
+ _build/student.ml            | 328 -------------------------------------------
+ _build/student.ml.depends    |   1 -
+ _build/student.mli           | 154 --------------------
+ _build/student.mli.depends   |   1 -
+ _build/zombie.cmi            | Bin 1432 -> 0 bytes
+ _build/zombie.cmo            | Bin 17334 -> 0 bytes
+ _build/zombie.ml             |  98 -------------
+ _build/zombie.ml.depends     |   1 -
+ _build/zombie.mli            |  39 -----
+ _build/zombie.mli.depends    |   1 -
+ main.byte                    |   1 -
+ 57 files changed, 1711 deletions(-)
+
+commit 451e7dddf192ccfab3d2d63d9e3218daf07dbbde
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 08:00:19 2016 -0500
+
+    progress?
+
+ _build/_digests              |  52 +++++++
+ _build/_log                  |  89 ++++++++++++
+ _build/command.cmi           | Bin 0 -> 1318 bytes
+ _build/command.cmo           | Bin 0 -> 7949 bytes
+ _build/command.ml            |  52 +++++++
+ _build/command.ml.depends    |   1 +
+ _build/command.mli           |  25 ++++
+ _build/command.mli.depends   |   1 +
+ _build/gameMap.cmi           | Bin 0 -> 2126 bytes
+ _build/gameMap.cmo           | Bin 0 -> 28802 bytes
+ _build/gameMap.ml            | 166 ++++++++++++++++++++++
+ _build/gameMap.ml.depends    |   1 +
+ _build/gameMap.mli           |  65 +++++++++
+ _build/gameMap.mli.depends   |   1 +
+ _build/gameState.cmi         | Bin 0 -> 1584 bytes
+ _build/gameState.cmo         | Bin 0 -> 43107 bytes
+ _build/gameState.ml          | 197 ++++++++++++++++++++++++++
+ _build/gameState.ml.depends  |   1 +
+ _build/gameState.mli         |  53 +++++++
+ _build/gameState.mli.depends |   1 +
+ _build/gui.cmi               | Bin 0 -> 2998 bytes
+ _build/gui.cmo               | Bin 0 -> 8651 bytes
+ _build/gui.ml                |  51 +++++++
+ _build/gui.ml.depends        |   1 +
+ _build/gui.mli               |  48 +++++++
+ _build/gui.mli.depends       |   1 +
+ _build/main.byte             | Bin 0 -> 8102565 bytes
+ _build/main.cmi              | Bin 0 -> 1758 bytes
+ _build/main.cmo              | Bin 0 -> 9029 bytes
+ _build/main.ml               |  49 +++++++
+ _build/main.ml.depends       |   1 +
+ _build/memory.cmi            | Bin 0 -> 786 bytes
+ _build/memory.cmo            | Bin 0 -> 3103 bytes
+ _build/memory.ml             |  12 ++
+ _build/memory.ml.depends     |   1 +
+ _build/memory.mli            |   9 ++
+ _build/memory.mli.depends    |   1 +
+ _build/ocamlc.where          |   1 +
+ _build/runner.cmi            | Bin 0 -> 2241 bytes
+ _build/runner.cmo            | Bin 0 -> 30234 bytes
+ _build/runner.ml             | 166 ++++++++++++++++++++++
+ _build/runner.ml.depends     |   1 +
+ _build/runner.mli            |  39 +++++
+ _build/runner.mli.depends    |   1 +
+ _build/student.cmi           | Bin 0 -> 3411 bytes
+ _build/student.cmo           | Bin 0 -> 58629 bytes
+ _build/student.ml            | 328 +++++++++++++++++++++++++++++++++++++++++++
+ _build/student.ml.depends    |   1 +
+ _build/student.mli           | 154 ++++++++++++++++++++
+ _build/student.mli.depends   |   1 +
+ _build/zombie.cmi            | Bin 0 -> 1432 bytes
+ _build/zombie.cmo            | Bin 0 -> 17334 bytes
+ _build/zombie.ml             |  98 +++++++++++++
+ _build/zombie.ml.depends     |   1 +
+ _build/zombie.mli            |  39 +++++
+ _build/zombie.mli.depends    |   1 +
+ main.byte                    |   1 +
+ my_json.json                 |   2 +-
+ student.ml                   |  15 +-
+ 59 files changed, 1720 insertions(+), 8 deletions(-)
+
+commit 1ea4e1d821f97aa55405cd2dc77deba9f937db72
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 07:26:40 2016 -0500
+
+    holy shit memory works
+
+ gameMap.ml    | 27 +++++++++++++++++++++++++--
+ gameMap.mli   |  4 +++-
+ gameState.ml  | 16 ++++++++++++++++
+ gameState.mli |  2 ++
+ memory.ml     |  3 ++-
+ my_json.json  |  1 +
+ student.ml    | 43 ++++++++++++++++++++++++++++++++++++++++++-
+ student.mli   |  2 ++
+ zombie.ml     | 13 +++++++++++++
+ zombie.mli    |  4 +++-
+ 10 files changed, 109 insertions(+), 6 deletions(-)
+
+commit c35dc93ab01c42aaf1a313e61fec3c5e7f844811
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 06:03:44 2016 -0500
+
+    file_save works yo
+
+ _build/_digests                     |  62 --------
+ _build/_log                         |  72 ---------
+ _build/command.cmi                  | Bin 1318 -> 0 bytes
+ _build/command.cmo                  | Bin 7949 -> 0 bytes
+ _build/command.ml                   |  52 -------
+ _build/command.ml.depends           |   1 -
+ _build/command.mli                  |  25 ----
+ _build/command.mli.depends          |   1 -
+ _build/gameMap.cmi                  | Bin 2034 -> 0 bytes
+ _build/gameMap.cmo                  | Bin 22177 -> 0 bytes
+ _build/gameMap.ml                   | 143 ------------------
+ _build/gameMap.ml.depends           |   1 -
+ _build/gameMap.mli                  |  63 --------
+ _build/gameMap.mli.depends          |   1 -
+ _build/gameState.cmi                | Bin 1498 -> 0 bytes
+ _build/gameState.cmo                | Bin 39120 -> 0 bytes
+ _build/gameState.ml                 | 181 -----------------------
+ _build/gameState.ml.depends         |   1 -
+ _build/gameState.mli                |  51 -------
+ _build/gameState.mli.depends        |   1 -
+ _build/gui.cmi                      | Bin 2998 -> 0 bytes
+ _build/gui.cmo                      | Bin 8651 -> 0 bytes
+ _build/gui.ml                       |  51 -------
+ _build/gui.ml.depends               |   1 -
+ _build/gui.mli                      |  48 ------
+ _build/gui.mli.depends              |   1 -
+ _build/main.byte                    | Bin 8076985 -> 0 bytes
+ _build/main.cmi                     | Bin 1758 -> 0 bytes
+ _build/main.cmo                     | Bin 9029 -> 0 bytes
+ _build/main.ml                      |  49 ------
+ _build/main.ml.depends              |   1 -
+ _build/memory.cmi                   | Bin 786 -> 0 bytes
+ _build/memory.cmo                   | Bin 2697 -> 0 bytes
+ _build/memory.ml                    |  11 --
+ _build/memory.ml.depends            |   1 -
+ _build/memory.mli                   |   9 --
+ _build/memory.mli.depends           |   1 -
+ _build/oUnit-test suite-csvm#00.log |  30 ----
+ _build/ocamlc.where                 |   1 -
+ _build/runner.cmi                   | Bin 2241 -> 0 bytes
+ _build/runner.cmo                   | Bin 30234 -> 0 bytes
+ _build/runner.ml                    | 166 ---------------------
+ _build/runner.ml.depends            |   1 -
+ _build/runner.mli                   |  39 -----
+ _build/runner.mli.depends           |   1 -
+ _build/student.cmi                  | Bin 3317 -> 0 bytes
+ _build/student.cmo                  | Bin 45032 -> 0 bytes
+ _build/student.ml                   | 286 ------------------------------------
+ _build/student.ml.depends           |   1 -
+ _build/student.mli                  | 152 -------------------
+ _build/student.mli.depends          |   1 -
+ _build/test.byte                    | Bin 4445755 -> 0 bytes
+ _build/test.cmi                     | Bin 1255 -> 0 bytes
+ _build/test.cmo                     | Bin 2910 -> 0 bytes
+ _build/test.ml                      |   6 -
+ _build/test.ml.depends              |   1 -
+ _build/test_command.cmi             | Bin 1033 -> 0 bytes
+ _build/test_command.cmo             | Bin 2346 -> 0 bytes
+ _build/test_command.ml              |   5 -
+ _build/test_command.ml.depends      |   1 -
+ _build/test_gameMap.cmi             | Bin 1178 -> 0 bytes
+ _build/test_gameMap.cmo             | Bin 2491 -> 0 bytes
+ _build/test_gameMap.ml              |   6 -
+ _build/test_gameMap.ml.depends      |   1 -
+ _build/zombie.cmi                   | Bin 1338 -> 0 bytes
+ _build/zombie.cmo                   | Bin 14180 -> 0 bytes
+ _build/zombie.ml                    |  85 -----------
+ _build/zombie.ml.depends            |   1 -
+ _build/zombie.mli                   |  37 -----
+ _build/zombie.mli.depends           |   1 -
+ main.byte                           |   1 -
+ test.byte                           |   1 -
+ 72 files changed, 1652 deletions(-)
+
+commit 39207308be7460e23f4693007fccbf32ec91af0f
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 06:03:29 2016 -0500
+
+    file_save works yo
+
+ _build/_digests                     |  62 ++++++++
+ _build/_log                         |  72 +++++++++
+ _build/command.cmi                  | Bin 0 -> 1318 bytes
+ _build/command.cmo                  | Bin 0 -> 7949 bytes
+ _build/command.ml                   |  52 +++++++
+ _build/command.ml.depends           |   1 +
+ _build/command.mli                  |  25 ++++
+ _build/command.mli.depends          |   1 +
+ _build/gameMap.cmi                  | Bin 0 -> 2034 bytes
+ _build/gameMap.cmo                  | Bin 0 -> 22177 bytes
+ _build/gameMap.ml                   | 143 ++++++++++++++++++
+ _build/gameMap.ml.depends           |   1 +
+ _build/gameMap.mli                  |  63 ++++++++
+ _build/gameMap.mli.depends          |   1 +
+ _build/gameState.cmi                | Bin 0 -> 1498 bytes
+ _build/gameState.cmo                | Bin 0 -> 39120 bytes
+ _build/gameState.ml                 | 181 +++++++++++++++++++++++
+ _build/gameState.ml.depends         |   1 +
+ _build/gameState.mli                |  51 +++++++
+ _build/gameState.mli.depends        |   1 +
+ _build/gui.cmi                      | Bin 0 -> 2998 bytes
+ _build/gui.cmo                      | Bin 0 -> 8651 bytes
+ _build/gui.ml                       |  51 +++++++
+ _build/gui.ml.depends               |   1 +
+ _build/gui.mli                      |  48 ++++++
+ _build/gui.mli.depends              |   1 +
+ _build/main.byte                    | Bin 0 -> 8076985 bytes
+ _build/main.cmi                     | Bin 0 -> 1758 bytes
+ _build/main.cmo                     | Bin 0 -> 9029 bytes
+ _build/main.ml                      |  49 ++++++
+ _build/main.ml.depends              |   1 +
+ _build/memory.cmi                   | Bin 0 -> 786 bytes
+ _build/memory.cmo                   | Bin 0 -> 2697 bytes
+ _build/memory.ml                    |  11 ++
+ _build/memory.ml.depends            |   1 +
+ _build/memory.mli                   |   9 ++
+ _build/memory.mli.depends           |   1 +
+ _build/oUnit-test suite-csvm#00.log |  30 ++++
+ _build/ocamlc.where                 |   1 +
+ _build/runner.cmi                   | Bin 0 -> 2241 bytes
+ _build/runner.cmo                   | Bin 0 -> 30234 bytes
+ _build/runner.ml                    | 166 +++++++++++++++++++++
+ _build/runner.ml.depends            |   1 +
+ _build/runner.mli                   |  39 +++++
+ _build/runner.mli.depends           |   1 +
+ _build/student.cmi                  | Bin 0 -> 3317 bytes
+ _build/student.cmo                  | Bin 0 -> 45032 bytes
+ _build/student.ml                   | 286 ++++++++++++++++++++++++++++++++++++
+ _build/student.ml.depends           |   1 +
+ _build/student.mli                  | 152 +++++++++++++++++++
+ _build/student.mli.depends          |   1 +
+ _build/test.byte                    | Bin 0 -> 4445755 bytes
+ _build/test.cmi                     | Bin 0 -> 1255 bytes
+ _build/test.cmo                     | Bin 0 -> 2910 bytes
+ _build/test.ml                      |   6 +
+ _build/test.ml.depends              |   1 +
+ _build/test_command.cmi             | Bin 0 -> 1033 bytes
+ _build/test_command.cmo             | Bin 0 -> 2346 bytes
+ _build/test_command.ml              |   5 +
+ _build/test_command.ml.depends      |   1 +
+ _build/test_gameMap.cmi             | Bin 0 -> 1178 bytes
+ _build/test_gameMap.cmo             | Bin 0 -> 2491 bytes
+ _build/test_gameMap.ml              |   6 +
+ _build/test_gameMap.ml.depends      |   1 +
+ _build/zombie.cmi                   | Bin 0 -> 1338 bytes
+ _build/zombie.cmo                   | Bin 0 -> 14180 bytes
+ _build/zombie.ml                    |  85 +++++++++++
+ _build/zombie.ml.depends            |   1 +
+ _build/zombie.mli                   |  37 +++++
+ _build/zombie.mli.depends           |   1 +
+ main.byte                           |   1 +
+ memory.ml                           |   6 +-
+ memory.mli                          |   6 +-
+ test.byte                           |   1 +
+ 74 files changed, 1660 insertions(+), 4 deletions(-)
+
+commit 84cbf13552855d5fec319890fa02a3ad4e374645
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 05:52:25 2016 -0500
+
+    all to_jsons made
+
+ student.ml | 21 ++++++++++++++++++++-
+ toJson.ml  | 29 -----------------------------
+ toJson.mli | 11 -----------
+ 3 files changed, 20 insertions(+), 41 deletions(-)
+
+commit 199576e17bfd92944f49ceda2fc4db4ddfbba9b8
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 05:37:25 2016 -0500
+
+    json for zombie done
+
+ toJson.ml | 21 ++++++++++++---------
+ zombie.ml |  7 ++++++-
+ 2 files changed, 18 insertions(+), 10 deletions(-)
+
+commit 1807d806a494ab9b40e2558f8fa51cfed8e7379f
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 05:32:19 2016 -0500
+
+    json for map done and added
+
+ _build/_digests                |  61 ----------
+ _build/_log                    |  72 -----------
+ _build/command.cmi             | Bin 1318 -> 0 bytes
+ _build/command.cmo             | Bin 7949 -> 0 bytes
+ _build/command.ml              |  52 --------
+ _build/command.ml.depends      |   1 -
+ _build/command.mli             |  25 ----
+ _build/command.mli.depends     |   1 -
+ _build/gameMap.cmi             | Bin 2034 -> 0 bytes
+ _build/gameMap.cmo             | Bin 22177 -> 0 bytes
+ _build/gameMap.ml              | 143 ----------------------
+ _build/gameMap.ml.depends      |   1 -
+ _build/gameMap.mli             |  63 ----------
+ _build/gameMap.mli.depends     |   1 -
+ _build/gameState.cmi           | Bin 1498 -> 0 bytes
+ _build/gameState.cmo           | Bin 39120 -> 0 bytes
+ _build/gameState.ml            | 181 ----------------------------
+ _build/gameState.ml.depends    |   1 -
+ _build/gameState.mli           |  51 --------
+ _build/gameState.mli.depends   |   1 -
+ _build/gui.cmi                 | Bin 2998 -> 0 bytes
+ _build/gui.cmo                 | Bin 8651 -> 0 bytes
+ _build/gui.ml                  |  51 --------
+ _build/gui.ml.depends          |   1 -
+ _build/gui.mli                 |  48 --------
+ _build/gui.mli.depends         |   1 -
+ _build/main.byte               | Bin 8068410 -> 0 bytes
+ _build/main.cmi                | Bin 1758 -> 0 bytes
+ _build/main.cmo                | Bin 9029 -> 0 bytes
+ _build/main.ml                 |  49 --------
+ _build/main.ml.depends         |   1 -
+ _build/memory.cmi              | Bin 807 -> 0 bytes
+ _build/memory.cmo              | Bin 2514 -> 0 bytes
+ _build/memory.ml               |   9 --
+ _build/memory.ml.depends       |   1 -
+ _build/memory.mli              |   7 --
+ _build/memory.mli.depends      |   1 -
+ _build/ocamlc.where            |   1 -
+ _build/runner.cmi              | Bin 2241 -> 0 bytes
+ _build/runner.cmo              | Bin 30234 -> 0 bytes
+ _build/runner.ml               | 166 -------------------------
+ _build/runner.ml.depends       |   1 -
+ _build/runner.mli              |  39 ------
+ _build/runner.mli.depends      |   1 -
+ _build/student.cmi             | Bin 3317 -> 0 bytes
+ _build/student.cmo             | Bin 38194 -> 0 bytes
+ _build/student.ml              | 267 -----------------------------------------
+ _build/student.ml.depends      |   1 -
+ _build/student.mli             | 152 -----------------------
+ _build/student.mli.depends     |   1 -
+ _build/test.cmi                | Bin 1255 -> 0 bytes
+ _build/test.cmo                | Bin 2910 -> 0 bytes
+ _build/test.ml                 |   6 -
+ _build/test.ml.depends         |   1 -
+ _build/test_command.cmi        | Bin 1033 -> 0 bytes
+ _build/test_command.cmo        | Bin 2346 -> 0 bytes
+ _build/test_command.ml         |   5 -
+ _build/test_command.ml.depends |   1 -
+ _build/test_gameMap.cmi        | Bin 1178 -> 0 bytes
+ _build/test_gameMap.cmo        | Bin 2491 -> 0 bytes
+ _build/test_gameMap.ml         |   6 -
+ _build/test_gameMap.ml.depends |   1 -
+ _build/zombie.cmi              | Bin 1338 -> 0 bytes
+ _build/zombie.cmo              | Bin 12382 -> 0 bytes
+ _build/zombie.ml               |  80 ------------
+ _build/zombie.ml.depends       |   1 -
+ _build/zombie.mli              |  37 ------
+ _build/zombie.mli.depends      |   1 -
+ main.byte                      |   1 -
+ 69 files changed, 1592 deletions(-)
+
+commit c065f76da4cc438557d5d3a56bcc7090362fcc93
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 05:32:07 2016 -0500
+
+    json for map done and added
+
+ _build/_digests                |  61 ++++++++++
+ _build/_log                    |  72 +++++++++++
+ _build/command.cmi             | Bin 0 -> 1318 bytes
+ _build/command.cmo             | Bin 0 -> 7949 bytes
+ _build/command.ml              |  52 ++++++++
+ _build/command.ml.depends      |   1 +
+ _build/command.mli             |  25 ++++
+ _build/command.mli.depends     |   1 +
+ _build/gameMap.cmi             | Bin 0 -> 2034 bytes
+ _build/gameMap.cmo             | Bin 0 -> 22177 bytes
+ _build/gameMap.ml              | 143 ++++++++++++++++++++++
+ _build/gameMap.ml.depends      |   1 +
+ _build/gameMap.mli             |  63 ++++++++++
+ _build/gameMap.mli.depends     |   1 +
+ _build/gameState.cmi           | Bin 0 -> 1498 bytes
+ _build/gameState.cmo           | Bin 0 -> 39120 bytes
+ _build/gameState.ml            | 181 ++++++++++++++++++++++++++++
+ _build/gameState.ml.depends    |   1 +
+ _build/gameState.mli           |  51 ++++++++
+ _build/gameState.mli.depends   |   1 +
+ _build/gui.cmi                 | Bin 0 -> 2998 bytes
+ _build/gui.cmo                 | Bin 0 -> 8651 bytes
+ _build/gui.ml                  |  51 ++++++++
+ _build/gui.ml.depends          |   1 +
+ _build/gui.mli                 |  48 ++++++++
+ _build/gui.mli.depends         |   1 +
+ _build/main.byte               | Bin 0 -> 8068410 bytes
+ _build/main.cmi                | Bin 0 -> 1758 bytes
+ _build/main.cmo                | Bin 0 -> 9029 bytes
+ _build/main.ml                 |  49 ++++++++
+ _build/main.ml.depends         |   1 +
+ _build/memory.cmi              | Bin 0 -> 807 bytes
+ _build/memory.cmo              | Bin 0 -> 2514 bytes
+ _build/memory.ml               |   9 ++
+ _build/memory.ml.depends       |   1 +
+ _build/memory.mli              |   7 ++
+ _build/memory.mli.depends      |   1 +
+ _build/ocamlc.where            |   1 +
+ _build/runner.cmi              | Bin 0 -> 2241 bytes
+ _build/runner.cmo              | Bin 0 -> 30234 bytes
+ _build/runner.ml               | 166 +++++++++++++++++++++++++
+ _build/runner.ml.depends       |   1 +
+ _build/runner.mli              |  39 ++++++
+ _build/runner.mli.depends      |   1 +
+ _build/student.cmi             | Bin 0 -> 3317 bytes
+ _build/student.cmo             | Bin 0 -> 38194 bytes
+ _build/student.ml              | 267 +++++++++++++++++++++++++++++++++++++++++
+ _build/student.ml.depends      |   1 +
+ _build/student.mli             | 152 +++++++++++++++++++++++
+ _build/student.mli.depends     |   1 +
+ _build/test.cmi                | Bin 0 -> 1255 bytes
+ _build/test.cmo                | Bin 0 -> 2910 bytes
+ _build/test.ml                 |   6 +
+ _build/test.ml.depends         |   1 +
+ _build/test_command.cmi        | Bin 0 -> 1033 bytes
+ _build/test_command.cmo        | Bin 0 -> 2346 bytes
+ _build/test_command.ml         |   5 +
+ _build/test_command.ml.depends |   1 +
+ _build/test_gameMap.cmi        | Bin 0 -> 1178 bytes
+ _build/test_gameMap.cmo        | Bin 0 -> 2491 bytes
+ _build/test_gameMap.ml         |   6 +
+ _build/test_gameMap.ml.depends |   1 +
+ _build/zombie.cmi              | Bin 0 -> 1338 bytes
+ _build/zombie.cmo              | Bin 0 -> 12382 bytes
+ _build/zombie.ml               |  80 ++++++++++++
+ _build/zombie.ml.depends       |   1 +
+ _build/zombie.mli              |  37 ++++++
+ _build/zombie.mli.depends      |   1 +
+ gameMap.ml                     |  11 +-
+ gameState.ml                   |   2 +-
+ main.byte                      |   1 +
+ toJson.ml                      |  12 +-
+ 72 files changed, 1610 insertions(+), 7 deletions(-)
+
+commit 2cd8aab8131aff79ec2948aba2008c90ffd3478c
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 05:15:29 2016 -0500
+
+    had to edit mlis for json
+
+ gameMap.ml    | 2 +-
+ gameMap.mli   | 2 +-
+ gameState.ml  | 6 +++---
+ gameState.mli | 2 +-
+ student.mli   | 2 +-
+ toJson.ml     | 9 ++++++++-
+ toJson.mli    | 6 +++---
+ zombie.mli    | 2 +-
+ 8 files changed, 19 insertions(+), 12 deletions(-)
+
+commit f43e874616f3c8c7f2f18aff17d68cf565d54624
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 04:53:59 2016 -0500
+
+    apparently list.split is horrible too so ifixed that in one case
+
+ student.ml |  2 +-
+ toJson.ml  | 17 +++++++++++++++++
+ toJson.mli | 11 +++++++++++
+ 3 files changed, 29 insertions(+), 1 deletion(-)
+
+commit cd871eac5bf393d8be9194c670cd17bd76a6b755
+Author: la334 <la334@cornell.edu>
+Date:   Thu Dec 1 04:36:17 2016 -0500
+
+    yo
+
+ Game Map.png    | Bin 0 -> 361467 bytes
+ Makefile        |   8 ++
+ command.ml      |  52 +++++++++++
+ command.mli     |  25 ++++++
+ gameMap.ml      | 134 ++++++++++++++++++++++++++++
+ gameMap.mli     |  63 +++++++++++++
+ gameState.ml    | 181 ++++++++++++++++++++++++++++++++++++++
+ gameState.mli   |  51 +++++++++++
+ gui.ml          |  51 +++++++++++
+ gui.mli         |  48 ++++++++++
+ main.ml         |  49 +++++++++++
+ memory.ml       |   9 ++
+ memory.mli      |   7 ++
+ runner.ml       | 166 +++++++++++++++++++++++++++++++++++
+ runner.mli      |  39 +++++++++
+ student.ml      | 267 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ student.mli     | 152 ++++++++++++++++++++++++++++++++
+ test.ml         |   6 ++
+ test_command.ml |   5 ++
+ test_gameMap.ml |   6 ++
+ zombie.ml       |  80 +++++++++++++++++
+ zombie.mli      |  37 ++++++++
+ 22 files changed, 1436 insertions(+)
+
+commit 57ce3f2577a320bf40cac560b6dcfb8ae3203315
+Author: Ubuntu <ubuntu@csvm>
+Date:   Tue Nov 29 19:03:29 2016 -0500
+
+    adding gui testingness
+
+ Makefile     | 5 ++++-
+ guitester.ml | 9 +++++++++
+ 2 files changed, 13 insertions(+), 1 deletion(-)

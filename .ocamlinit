@@ -1,0 +1,25 @@
+let update_quantity lst itms : (string * (int*int)) list =
+  List.fold_left (fun acc it ->
+    let itm_nm = fst it in
+    if List.mem_assoc itm_nm acc then
+      let itm_hl = fst (snd it) in
+      let itm_qt = snd (snd it) in
+      let lst_qt = snd (List.assoc itm_nm acc) in
+      let rem_it = List.remove_assoc itm_nm acc in
+      let upd_qt = lst_qt+itm_qt in
+      if upd_qt <= 0 then rem_it
+      else [(itm_nm, (itm_hl,upd_qt))] @ rem_it
+    else
+      if snd (snd it) <= 0 then acc
+      else [it] @ acc) lst itms;;
+
+let lstitems = [("Apple", (15, 4)); ("Pear", (10, 5)); ("Poo", (5, 1))];;
+
+let add1 = [("Apple", (15, 0-1))];;
+let add2 = [("Poo", (5, 0-1))];;
+let add3 = [("Apple", (15, 0-8))];;
+let add4 = [("Duck", (50, 4))];;
+let add5 = [("Duck", (50, 0-1))];;
+let add6 = add1@add2@add3@add4@add5;;
+
+let upq = update_quantity lstitems;;
